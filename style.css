@@ -163,10 +163,7 @@
     color: hsl(0, 0%, 52%);
   }
 
-  .lightHover #btn:hover {
-    background-color: hsl(0, 0%, 100%);
-    text-decoration: underline black;
-  }
+  
   #srch .marTop {
     margin-top: 0px;
   }

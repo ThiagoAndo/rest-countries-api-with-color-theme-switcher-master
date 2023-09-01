@@ -7,17 +7,19 @@ window.addEventListener("load", () => {
   const input = document.querySelector("#form > input");
   const inputSelect = document.querySelector("#formSelec > select");
   const placeholder = document.querySelector("#form > input::placeholder");
+  const btnTxt = document.querySelector("#btn p");
   let myData = {};
   let sectionNav = document.querySelector("#srch");
-  sectionNav.className = "marTop";
- 
-  
+
+  // sectionNav.className = "marTop";
+
   async function fetchData() {
     const data = await fetch("https://restcountries.com/v3.1/all");
     const dataParse = await data.json();
     return dataParse;
   }
 
+  //Printing all cards with their respective country ==========================
   fetchData().then((data) => {
     myData = { ...data };
 
@@ -55,86 +57,95 @@ window.addEventListener("load", () => {
       "user strict";
       main.innerHTML = content;
     })();
-
   });
 
-  // btnMode.onclick = () => {
-  //   const cards = document.querySelectorAll("article");
-  //   function over() {
-  //     btnMode.style.backgroundColor = "hsl(0, 0%, 98%)";
-  //     buttonTxt.style.textDecoration = "underline black";
-  //   }
-  //   function out() {
-  //     btnMode.style.backgroundColor = "hsl(0, 0%, 100%)";
-  //     buttonTxt.style.textDecoration = "none";
-  //   }
+//============================================================================
 
-  //   function overD() {
-  //     btnMode.style.backgroundColor = " hsl(207, 26%, 17%)";
-  //     buttonTxt.style.textDecoration = "underline white";
-  //   }
-  //   function outD() {
-  //     btnMode.style.backgroundColor = "hsl(209, 23%, 22%)";
-  //     buttonTxt.style.textDecoration = "none";
-  //   }
-
-  //   const btnTxt = document.querySelector("#btn p");
-  //   if (btnTxt.innerHTML === "Light Mode") {
-  //     btnTxt.innerHTML = "Dark Mode";
-  //     nav.className = "light";
-  //     body.className = "blight";
-  //     input.className = "light";
-  //     input.classList.add("your-class");
-  //     inputSelect.className = "light";
-  //     svg.classList.remove("filt");
-  //     btnMode.classList.add("lightHover");
-  //     cards.forEach((card) => {
-  //       card.className = "light";
-  //     });
-  //     btnMode.removeEventListener("mouseover", overD);
-  //     btnMode.removeEventListener("mouseout", outD);
-  //     btnMode.addEventListener("mouseover", over);
-  //     btnMode.addEventListener("mouseout", out);
-  //   } else {
-  //     btnTxt.innerHTML = "Light Mode";
-  //     nav.className = "dark";
-  //     body.className = "bDark";
-  //     input.className = "dark";
-  //     input.classList.remove("your-class");
-  //     inputSelect.className = "dark";
-  //     svg.className = "filt";
-  //     cards.forEach((card) => {
-  //       card.className = "dark";
-  //     });
-  //     btnMode.classList.remove("lightHover");
-  //     btnMode.removeEventListener("mouseover", over);
-  //     btnMode.removeEventListener("mouseout", out);
-  //     btnMode.addEventListener("mouseover", overD);
-  //     btnMode.addEventListener("mouseout", outD);
-  //   }
-
-  // };
 
   setTimeout(() => {
-    //   let count = -1;
-    //   do {
-    //     count++;
-    //   } while (data[count].name.common != "Brazil");
-    //   console.log(data[count]);
-    //   console.log("name: " + data[count].name.common);
-    //   console.log("Native Name: " + data[count].altSpellings[2]);
-    //   console.log("population: " + data[count].population);
-    //   console.log("region: " + data[count].region);
-    //   console.log("subregion: " + data[count].subregion);
-    //   console.log("capital: " + data[count].capital);
-    //   console.log("topLevelDomain: " + data[count].topLevelDomain);
-    //    const currencie = Object.keys(data[count].currencies)[0]
-    //    console.log(data[count].currencies[currencie].name);
-    //   const lang = Object.keys(data[count].languages)[0];
-    //   console.log("languages: " + data[count].languages[lang]);
-    //   console.log("borders: " + data[count].borders);
-    //   console.log("flags: " + data[count].flags.png);
-  }, 50);
+    /*
+      let count = -1;
+      do {
+        count++;
+      } while (data[count].name.common != "Brazil");
+      console.log(data[count]);
+      console.log("name: " + data[count].name.common);
+      console.log("Native Name: " + data[count].altSpellings[2]);
+      console.log("population: " + data[count].population);
+      console.log("region: " + data[count].region);
+      console.log("subregion: " + data[count].subregion);
+      console.log("capital: " + data[count].capital);
+      console.log("topLevelDomain: " + data[count].topLevelDomain);
+       const currencie = Object.keys(data[count].currencies)[0]
+       console.log(data[count].currencies[currencie].name);
+      const lang = Object.keys(data[count].languages)[0];
+      console.log("languages: " + data[count].languages[lang]);
+      console.log("borders: " + data[count].borders);
+      console.log("flags: " + data[count].flags.png);
+*/
+    const cards = document.querySelectorAll("article");
+
+    cards.forEach((card) => {
+      card.addEventListener("mouseover", function () {
+        if (btnTxt.innerHTML === "Light Mode") {
+          console.log("yes");
+        }
+      });
+    });
+
+    //Addinng functionality to Button mode ===============================
+    btnMode.onclick = () => {
+      const cards = document.querySelectorAll("article");
+
+      function over() {
+        btnMode.style.backgroundColor = "hsl(0, 0%, 98%)";
+        buttonTxt.style.textDecoration = "underline black";
+      }
+      function out() {
+        btnMode.style.backgroundColor = "hsl(0, 0%, 100%)";
+        buttonTxt.style.textDecoration = "none";
+      }
+
+      function overD() {
+        btnMode.style.backgroundColor = " hsl(207, 26%, 17%)";
+        buttonTxt.style.textDecoration = "underline white";
+      }
+      function outD() {
+        btnMode.style.backgroundColor = "hsl(209, 23%, 22%)";
+        buttonTxt.style.textDecoration = "none";
+      }
+
+      function classes(class1, class2) {
+        nav.className = class1;
+        body.className = class2;
+        input.className = class1;
+        inputSelect.className = class1;
+        cards.forEach((card) => {
+          card.className = class1;
+        });
+      }
+
+      if (btnTxt.innerHTML === "Light Mode") {
+        btnTxt.innerHTML = "Dark Mode";
+        classes("light", "blight");
+        input.classList.add("your-class");
+        svg.classList.remove("filt");
+        btnMode.removeEventListener("mouseover", overD);
+        btnMode.removeEventListener("mouseout", outD);
+        btnMode.addEventListener("mouseover", over);
+        btnMode.addEventListener("mouseout", out);
+      } else {
+        btnTxt.innerHTML = "Light Mode";
+        classes("dark", "bDark");
+        input.classList.remove("your-class");
+        svg.className = "filt";
+        btnMode.removeEventListener("mouseover", over);
+        btnMode.removeEventListener("mouseout", out);
+        btnMode.addEventListener("mouseover", overD);
+        btnMode.addEventListener("mouseout", outD);
+      }
+    };
+  }, 500);
 });
 
 /*
