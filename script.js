@@ -59,8 +59,7 @@ window.addEventListener("load", () => {
     })();
   });
 
-//============================================================================
-
+  //============================================================================
 
   setTimeout(() => {
     /*
@@ -88,9 +87,14 @@ window.addEventListener("load", () => {
     cards.forEach((card) => {
       card.addEventListener("mouseover", function () {
         if (btnTxt.innerHTML === "Light Mode") {
-          console.log("yes");
+          card.style.boxShadow = "0px 0px 6px 0px white";
+        }else{
+          card.style.boxShadow = "0px 0px 6px 0px black";
         }
       });
+       card.addEventListener("mouseout", function () {
+           card.style.boxShadow = "0px 0px 0px 0px";
+       });
     });
 
     //Addinng functionality to Button mode ===============================
@@ -130,8 +134,7 @@ window.addEventListener("load", () => {
         classes("light", "blight");
         input.classList.add("your-class");
         svg.classList.remove("filt");
-        btnMode.removeEventListener("mouseover", overD);
-        btnMode.removeEventListener("mouseout", outD);
+       
         btnMode.addEventListener("mouseover", over);
         btnMode.addEventListener("mouseout", out);
       } else {
@@ -139,8 +142,7 @@ window.addEventListener("load", () => {
         classes("dark", "bDark");
         input.classList.remove("your-class");
         svg.className = "filt";
-        btnMode.removeEventListener("mouseover", over);
-        btnMode.removeEventListener("mouseout", out);
+        
         btnMode.addEventListener("mouseover", overD);
         btnMode.addEventListener("mouseout", outD);
       }
