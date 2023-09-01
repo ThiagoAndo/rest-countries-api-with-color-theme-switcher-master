@@ -14,7 +14,9 @@
     font-family: "Ubuntu", sans-serif;
     box-sizing: content-box;
     margin-bottom: 5.625rem;
-    position: s;
+  }
+  main {
+    position: relative;
   }
   /* Navagation========================== */
   nav {
@@ -33,13 +35,16 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    width: 7rem;
-    height: 3rem;
+    justify-content: space-around;
+    width: 9rem;
+    height: 4rem;
     margin-right: 5rem;
+    cursor: pointer;
+    box-sizing: content-box;
   }
+
   #btn div:first-of-type {
-    
+    background-image: url("./assets/moon.svg");
     background-repeat: no-repeat;
     width: 1rem;
     height: 1rem;
@@ -55,10 +60,11 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-top: 4rem;
     width: 100%;
   }
-
+  .marg {
+    margin-top: 4rem;
+  }
   #form > input {
     padding: 1rem;
     padding-left: 2rem;
@@ -69,7 +75,7 @@
     border-radius: 0.25rem;
     margin-left: 5rem;
   }
-  #form > input::placeholder {
+  ::placeholder {
     color: hsl(0, 0%, 100%);
   }
   #formSelec select {
@@ -81,11 +87,10 @@
     border-radius: 0.25rem;
   }
 
-  /* Main========================== */
+  /* Main & Cards========================== */
   #main {
     width: 100%;
     overflow: hidden;
-    background-color: hsl(207, 26%, 17%);
     padding-bottom: 5.625rem;
   }
 
@@ -95,35 +100,44 @@
     margin-left: 5rem;
     width: 16.25rem;
     height: 18.75rem;
-    background-color: aqua;
     display: flex;
     flex-direction: column;
-    border-radius: 1rem;
+    border-radius: 0.3rem;
     overflow: hidden;
+    cursor: pointer;
   }
-
 
   article > div:first-of-type {
     width: 100%;
     height: 9.375rem;
-    background-image: url("https://flagcdn.com/w320/br.png");
-    background-position: center;
     background-size: cover;
+    background-position: center;
   }
 
-  article div:last-of-type div {
-    overflow: hidden;
-  }
   article div:last-of-type div {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 14.25rem;
-    height: 8rem;
     margin-top: 0.6875rem;
-    margin-left: 1rem;
+    margin: 1.5rem;
+  }
+  article div:last-of-type div h3 {
+    margin-bottom: 0.75rem;
+  }
+  article div:last-of-type div p {
+    margin-bottom: 0.5rem;
   }
 
+  /* Expand Section========================== */
+  #expand {
+    width: 100%;
+    height: 91.5vh;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: red;
+  }
   /* JS DOM manipulation========================== */
   .bDark {
     background-color: hsl(207, 26%, 17%);
@@ -134,7 +148,31 @@
     background-color: hsl(209, 23%, 22%);
     color: hsl(0, 0%, 100%);
   }
-  .cl {
-    clear: both;
+
+  .blight {
+    background-color: hsl(0, 0%, 98%);
+    color: hsl(200, 15%, 8%);
   }
+
+  .light {
+    background-color: hsl(0, 0%, 100%);
+    color: hsl(200, 15%, 8%);
+  }
+
+  .your-class::placeholder {
+    color: hsl(0, 0%, 52%);
+  }
+
+  .lightHover #btn:hover {
+    background-color: hsl(0, 0%, 100%);
+    text-decoration: underline black;
+  }
+  #srch .marTop {
+    margin-top: 0px;
+  }
+
+  .stop-scrolling {
+  height: 100%;
+  overflow: hidden;
+}
 }

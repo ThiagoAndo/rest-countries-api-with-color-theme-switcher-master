@@ -1,45 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-    <title>Document</title>
-  </head>
 
-  <body class="bDark">
-    <nav class="dark">
-      <div id="mainTxt">
-        <h2>Where in the world?</h2>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Document</title>
+</head>
+
+<body class="bDark">
+  <nav class="dark">
+    <div id="mainTxt">
+      <h2>Where in the world?</h2>
+    </div>
+    <div id="btn">
+      <div class="filt"></div>
+      <div>
+        <p>Light Mode</p>
       </div>
-      <div id="btn">
-        <div class="filt"></div>
-        <div>
-          <p>Light Mode</p>
-        </div>
-      </div>
-    </nav>
-    <section id="srch">
+    </div>
+  </nav>
+  <main>
+    <section id="expand"></section>
+    <section id="srch" class="marg">
       <form role="search-role" id="form">
-        <input
-          class="dark"
-          type="search"
-          id="query-details"
-          name="h"
-          placeholder="&#61442; Search for a country..."
-          aria-label="Search through the content of the site"
-        />
+        <input class="dark" type="search" id="query-details" name="h" placeholder="&#61442; Search for a country..."
+          aria-label="Search through the content of the site" />
       </form>
       <form action="/" id="formSelec">
         <select name="type" class="dark">
@@ -52,8 +43,9 @@
       </form>
     </section>
     <section id="main">
-     <p>Thiago</p>
     </section>
-    <script src="script.js"></script>
-  </body>
+  </main>
+  <script src="script.js"></script>
+</body>
+
 </html>
