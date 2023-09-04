@@ -148,7 +148,7 @@ window.addEventListener("load", () => {
         '<div id="contExp">' +
         '<div id="flag" style="background-image:' +
         "url(" +
-        `${country.flags.png}` +q
+        `${country.flags.png}` +
         ')"' +
         "></div>" +
         '<div id="holdInf">' +
