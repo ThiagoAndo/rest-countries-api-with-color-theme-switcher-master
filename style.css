@@ -141,17 +141,17 @@
   }
   /* JS DOM manipulation========================== */
   .bDark {
-    background-color: hsl(207, 26%, 17%);
-    color: hsl(0, 0%, 100%);
+    background-color: #202c37;
+    color: #ffffff;
   }
 
   .dark {
-    background-color: hsl(209, 23%, 22%);
+    background-color: #2b3945;
     color: hsl(0, 0%, 100%);
   }
 
   .blight {
-    background-color: hsl(0, 0%, 98%);
+    background-color: #fafafa;
     color: hsl(200, 15%, 8%);
   }
 

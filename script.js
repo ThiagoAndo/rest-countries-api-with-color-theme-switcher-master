@@ -23,6 +23,8 @@ window.addEventListener("load", () => {
   fetchData().then((data) => {
     myData = { ...data };
 
+    data.sort((a, b) => (a.name.common > b.name.common ? 1 : -1));
+
     let content = "";
     let main = document.querySelector("#main");
     data.forEach((country) => {
@@ -57,6 +59,63 @@ window.addEventListener("load", () => {
       "user strict";
       main.innerHTML = content;
     })();
+
+    const cards = document.querySelectorAll("article");
+
+    cards.forEach((card) => {
+      card.addEventListener("mouseover", function () {
+        if (btnTxt.innerHTML === "Light Mode") {
+          card.style.boxShadow = "0px 0px 6px 0px white";
+        } else {
+          card.style.boxShadow = "0px 0px 6px 0px black";
+        }
+      });
+      card.addEventListener("mouseout", function () {
+        card.style.boxShadow = "0px 0px 0px 0px";
+      });
+    });
+
+    //Addinng functionality to Button mode ===============================
+    btnMode.onclick = () => {
+      const cards = document.querySelectorAll("article");
+
+
+      function addEvent(color1, color2, txtType1, txtType2) {
+        btnMode.addEventListener("mouseover", function () {
+          btnMode.style.backgroundColor = color1;
+          buttonTxt.style.textDecoration = txtType1;
+        });
+        btnMode.addEventListener("mouseout", function () {
+          btnMode.style.backgroundColor = color2;
+          buttonTxt.style.textDecoration = txtType2;
+        });
+      }
+
+      function classes(class1, class2) {
+        nav.className = class1;
+        body.className = class2;
+        input.className = class1;
+        inputSelect.className = class1;
+        cards.forEach((card) => {
+          card.className = class1;
+        });
+      }
+
+      if (btnTxt.innerHTML === "Light Mode") {
+        btnTxt.innerHTML = "Dark Mode";
+        classes("light", "blight");
+        addEvent("#fafafa", "underline black", "#ffffff ", "none");
+        input.classList.add("your-class");
+        svg.classList.remove("filt");
+      } else {
+        btnTxt.innerHTML = "Light Mode";
+        classes("dark", "bDark");
+        input.classList.remove("your-class");
+        svg.className = "filt";
+        addEvent("#202c37", "underline black", "#2b3945 ", "none");
+      
+      }
+    };
   });
 
   //============================================================================
@@ -82,71 +141,6 @@ window.addEventListener("load", () => {
       console.log("borders: " + data[count].borders);
       console.log("flags: " + data[count].flags.png);
 */
-    const cards = document.querySelectorAll("article");
-
-    cards.forEach((card) => {
-      card.addEventListener("mouseover", function () {
-        if (btnTxt.innerHTML === "Light Mode") {
-          card.style.boxShadow = "0px 0px 6px 0px white";
-        }else{
-          card.style.boxShadow = "0px 0px 6px 0px black";
-        }
-      });
-       card.addEventListener("mouseout", function () {
-           card.style.boxShadow = "0px 0px 0px 0px";
-       });
-    });
-
-    //Addinng functionality to Button mode ===============================
-    btnMode.onclick = () => {
-      const cards = document.querySelectorAll("article");
-
-      function over() {
-        btnMode.style.backgroundColor = "hsl(0, 0%, 98%)";
-        buttonTxt.style.textDecoration = "underline black";
-      }
-      function out() {
-        btnMode.style.backgroundColor = "hsl(0, 0%, 100%)";
-        buttonTxt.style.textDecoration = "none";
-      }
-
-      function overD() {
-        btnMode.style.backgroundColor = " hsl(207, 26%, 17%)";
-        buttonTxt.style.textDecoration = "underline white";
-      }
-      function outD() {
-        btnMode.style.backgroundColor = "hsl(209, 23%, 22%)";
-        buttonTxt.style.textDecoration = "none";
-      }
-
-      function classes(class1, class2) {
-        nav.className = class1;
-        body.className = class2;
-        input.className = class1;
-        inputSelect.className = class1;
-        cards.forEach((card) => {
-          card.className = class1;
-        });
-      }
-
-      if (btnTxt.innerHTML === "Light Mode") {
-        btnTxt.innerHTML = "Dark Mode";
-        classes("light", "blight");
-        input.classList.add("your-class");
-        svg.classList.remove("filt");
-       
-        btnMode.addEventListener("mouseover", over);
-        btnMode.addEventListener("mouseout", out);
-      } else {
-        btnTxt.innerHTML = "Light Mode";
-        classes("dark", "bDark");
-        input.classList.remove("your-class");
-        svg.className = "filt";
-        
-        btnMode.addEventListener("mouseover", overD);
-        btnMode.addEventListener("mouseout", outD);
-      }
-    };
   }, 500);
 });
 
