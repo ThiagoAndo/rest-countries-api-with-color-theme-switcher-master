@@ -65,19 +65,21 @@ window.addEventListener("load", () => {
     })();
 
     //Addinng functionality to Button mode ===============================
+    addEvent("#202c37", "#2b3945 ", "underline black", "none");
+
+    function addEvent(color1, color2, txtType1, txtType2) {
+      btnMode.addEventListener("mouseover", function () {
+        btnMode.style.backgroundColor = color1;
+        buttonTxt.style.textDecoration = txtType1;
+      });
+      btnMode.addEventListener("mouseout", function () {
+        btnMode.style.backgroundColor = color2;
+        buttonTxt.style.textDecoration = txtType2;
+      });
+    }
+
     btnMode.onclick = () => {
       const cards = document.querySelectorAll("article");
-
-      function addEvent(color1, color2, txtType1, txtType2) {
-        btnMode.addEventListener("mouseover", function () {
-          btnMode.style.backgroundColor = color1;
-          buttonTxt.style.textDecoration = txtType1;
-        });
-        btnMode.addEventListener("mouseout", function () {
-          btnMode.style.backgroundColor = color2;
-          buttonTxt.style.textDecoration = txtType2;
-        });
-      }
 
       function classes(class1, class2) {
         nav.className = class1;
@@ -87,12 +89,36 @@ window.addEventListener("load", () => {
         cards.forEach((card) => {
           card.className = class1;
         });
+        try {
+          const expMode = document.querySelector("#expand");
+          const expModeBtn = document.querySelectorAll(".selectBorder");
+          const ModeBtnBack = document.querySelector(".btnExp");
+          btnsExpand(ModeBtnBack);
+
+          expModeBtn.forEach((btn) => {
+            btnsExpand(btn);
+          });
+
+          function btnsExpand(obj = {}) {
+            const attr = obj.getAttribute("class");
+            const cls2 = attr.split(" ");
+            console.log(cls2[1]);
+
+            obj.classList.remove(cls2[1]);
+            obj.classList.add(class1);
+          }
+
+          expMode.className = class1;
+        } catch (err) {
+          console.log(err);
+        }
       }
 
       if (btnTxt.innerHTML === "Light Mode") {
         btnTxt.innerHTML = "Dark Mode";
         classes("light", "blight");
-        addEvent("#fafafa", "underline black", "#ffffff ", "none");
+        btnMode.style.backgroundColor = "#ffffff";
+        addEvent("#fafafa", "#ffffff", "underline black", "none");
         input.classList.add("your-class");
         svg.classList.remove("filt");
       } else {
@@ -100,7 +126,9 @@ window.addEventListener("load", () => {
         classes("dark", "bDark");
         input.classList.remove("your-class");
         svg.className = "filt";
-        addEvent("#202c37", "underline black", "#2b3945 ", "none");
+        btnMode.style.backgroundColor = "#2b3945";
+
+        addEvent("#202c37", "#2b3945", "underline black", "none");
       }
     };
 
@@ -123,7 +151,7 @@ window.addEventListener("load", () => {
         sectionNav.className = "marTop";
         let thisCountry = findCountry(card.id);
         createExpandedCard(thisCountry);
-        const cca3Btn= document.querySelectorAll(".selectBorder");
+        const cca3Btn = document.querySelectorAll(".selectBorder");
       });
 
       function findCountry(country) {
@@ -184,9 +212,13 @@ window.addEventListener("load", () => {
         '<div id="border">' +
         "<span id='noBtn'>Border countries:&nbsp</span>" +
         '<div id="btnBor">';
-      for (let index = 0; index < country.borders.length; index++) {
-        let name = findCountryNAme(country.borders[index]);
-        expand += '<span class="selectBorder dark">' + `${name}` + "</span>";
+      if (country.borders) {
+        for (let index = 0; index < country.borders.length; index++) {
+          let name = findCountryNAme(country.borders[index]);
+          expand += '<span class="selectBorder dark">' + `${name}` + "</span>";
+        }
+      } else {
+        expand += '<span class="selectBorder dark"> No Borders</span>';
       }
 
       expand +=
