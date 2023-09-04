@@ -103,7 +103,6 @@ window.addEventListener("load", () => {
             const attr = obj.getAttribute("class");
             const cls2 = attr.split(" ");
             console.log(cls2[1]);
-
             obj.classList.remove(cls2[1]);
             obj.classList.add(class1);
           }
@@ -153,15 +152,16 @@ window.addEventListener("load", () => {
         createExpandedCard(thisCountry);
         const cca3Btn = document.querySelectorAll(".selectBorder");
       });
+     
+    });  
 
-      function findCountry(country) {
-        let count = -1;
-        do {
-          count++;
-        } while (data[count].name.common != country);
-        return data[count];
-      }
-    });
+     function findCountry(country) {
+       let count = -1;
+       do {
+         count++;
+       } while (data[count].name.common != country);
+       return data[count];
+     }
 
     function createExpandedCard(country) {
       let expand = "";
