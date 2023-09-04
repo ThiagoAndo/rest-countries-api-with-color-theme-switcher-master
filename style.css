@@ -76,7 +76,7 @@
     margin-left: 5rem;
   }
   ::placeholder {
-    color: hsl(0, 0%, 100%);
+    color: #ffffff;
   }
   #formSelec select {
     padding: 1rem;
@@ -136,9 +136,98 @@
     height: 91.5vh;
     position: absolute;
     right: 0;
-    top: 0;
-    background-color: red;
+    top: 0em;
   }
+
+  #expand > div {
+    width: 85%;
+    margin: auto;
+    margin-top: 3.5rem;
+    height: 81.5vh;
+  }
+
+  .btnExp {
+    width: 8rem;
+    height: 2.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.3rem;
+    box-shadow: 0px 0px 6px 0px black;
+  }
+
+  .btnExp span {
+    font-size: 1.2rem;
+  }
+  #expand #contExp {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 50vh;
+    margin-top: 3rem;
+  }
+  #expand #flag {
+    width: 35rem;
+    height: 50vh;
+    background-size: cover;
+    background-position: center;
+  }
+  #expand #holdInf {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 3fr 1fr;
+    width: 45rem;
+    height: 50vh;
+  }
+  #expand h1 {
+    font-size: 1.6rem;
+  }
+  #holdInf .inf {
+    margin: 0;
+    height: 23vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 7rem;
+    margin-top: 1.5rem;
+  }
+
+  #holdInf #border {
+    margin-top: 5rem;
+    grid-area: 2/1/3/3;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    margin-left: 7rem;
+  }
+  #btnBor {
+    width: 15rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  #holdInf #border #noBtn {
+    width: 9rem;
+    height: 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  #holdInf #border .selectBorder {
+    width: 6rem;
+    height: 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    box-shadow: 0px 0px 6px 0px black;
+  }
+
   /* JS DOM manipulation========================== */
   .bDark {
     background-color: #202c37;
@@ -147,30 +236,29 @@
 
   .dark {
     background-color: #2b3945;
-    color: hsl(0, 0%, 100%);
+    color: #ffffff;
   }
 
   .blight {
     background-color: #fafafa;
-    color: hsl(200, 15%, 8%);
+    color: #111517;
   }
 
   .light {
-    background-color: hsl(0, 0%, 100%);
+    background-color: #ffffff;
     color: hsl(200, 15%, 8%);
   }
 
   .your-class::placeholder {
-    color: hsl(0, 0%, 52%);
+    color: #858585;
   }
 
-  
   #srch .marTop {
     margin-top: 0px;
   }
 
   .stop-scrolling {
-  height: 100%;
-  overflow: hidden;
-}
+    height: 100%;
+    overflow: hidden;
+  }
 }

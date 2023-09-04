@@ -19,17 +19,21 @@ window.addEventListener("load", () => {
     return dataParse;
   }
 
-  //Printing all cards with their respective country ==========================
   fetchData().then((data) => {
     myData = { ...data };
 
+    //Sorting the cards by aphabetic order ==========================
+
     data.sort((a, b) => (a.name.common > b.name.common ? 1 : -1));
 
+    //Printing all cards with their respective country ==========================
     let content = "";
     let main = document.querySelector("#main");
     data.forEach((country) => {
       content +=
-        " <article class='dark'>" +
+        " <article class='dark' id='" +
+        `${country.name.common}` +
+        "'>" +
         "<div style='background-image:" +
         "url(" +
         `${country.flags.png}` +
@@ -37,17 +41,17 @@ window.addEventListener("load", () => {
         ">" +
         "</div>" +
         "<div>" +
-        "<div>" +
+        "<div class='infoBox'>" +
         "<h3>" +
         `${country.name.common}` +
         "</h3>" +
-        "<p>Population: " +
+        "<p>Population:&nbsp " +
         `${country.population}` +
         "</p>" +
-        "<p>Region: " +
+        "<p>Region:&nbsp " +
         `${country.region}` +
         "</p>" +
-        "<p>Capital: " +
+        "<p>Capital:&nbsp " +
         `${country.capital}` +
         "</p>" +
         "</div>" +
@@ -60,25 +64,9 @@ window.addEventListener("load", () => {
       main.innerHTML = content;
     })();
 
-    const cards = document.querySelectorAll("article");
-
-    cards.forEach((card) => {
-      card.addEventListener("mouseover", function () {
-        if (btnTxt.innerHTML === "Light Mode") {
-          card.style.boxShadow = "0px 0px 6px 0px white";
-        } else {
-          card.style.boxShadow = "0px 0px 6px 0px black";
-        }
-      });
-      card.addEventListener("mouseout", function () {
-        card.style.boxShadow = "0px 0px 0px 0px";
-      });
-    });
-
     //Addinng functionality to Button mode ===============================
     btnMode.onclick = () => {
       const cards = document.querySelectorAll("article");
-
 
       function addEvent(color1, color2, txtType1, txtType2) {
         btnMode.addEventListener("mouseover", function () {
@@ -113,15 +101,111 @@ window.addEventListener("load", () => {
         input.classList.remove("your-class");
         svg.className = "filt";
         addEvent("#202c37", "underline black", "#2b3945 ", "none");
-      
       }
     };
+
+    //Addinng effect on the cards when the mouse is over ===============================
+    const cards = document.querySelectorAll("article");
+    cards.forEach((card) => {
+      card.addEventListener("mouseover", function () {
+        if (btnTxt.innerHTML === "Light Mode") {
+          card.style.boxShadow = "0px 0px 6px 0px white";
+        } else {
+          card.style.boxShadow = "0px 0px 6px 0px black";
+        }
+      });
+      card.addEventListener("mouseout", function () {
+        card.style.boxShadow = "0px 0px 0px 0px";
+      });
+
+      //Creating screen with a clicked county expanded =================================
+      card.addEventListener("click", function () {
+        sectionNav.className = "marTop";
+        let thisCountry = findCountry(card.id);
+        createExpandedCard(thisCountry);
+        const cca3Btn= document.querySelectorAll(".selectBorder");
+      });
+
+      function findCountry(country) {
+        let count = -1;
+        do {
+          count++;
+        } while (data[count].name.common != country);
+        return data[count];
+      }
+    });
+
+    function createExpandedCard(country) {
+      let expand = "";
+      const currencie = Object.keys(country.currencies)[0];
+      const lang = Object.keys(country.languages)[0];
+      expand +=
+        '<section id="expand" class="bDark">' +
+        "<div>" +
+        '<div class="btnExp dark">' +
+        "<span>⬅️&nbsp&nbspBack</span>" +
+        "</div>" +
+        '<div id="contExp">' +
+        '<div id="flag" style="background-image:' +
+        "url(" +
+        `${country.flags.png}` +q
+        ')"' +
+        "></div>" +
+        '<div id="holdInf">' +
+        '<div class="inf">' +
+        "<h1>" +
+        `${country.name.common}` +
+        "</h1>" +
+        "<p>Population:&nbsp " +
+        `${country.population}` +
+        "</p>" +
+        "<p>Region:&nbsp " +
+        `${country.region}` +
+        "</p>" +
+        "<p>subregion:&nbsp " +
+        `${country.subregion}` +
+        "</p>" +
+        "<p>Capital:&nbsp " +
+        `${country.capital}` +
+        "</p>" +
+        "</div>" +
+        '<div class="inf">' +
+        "<h1>&nbsp</h1>" +
+        "<p>Top Level Domain: &nbsp" +
+        `${country.tld}` +
+        "</p>" +
+        "<p>Currencies:&nbsp " +
+        `${country.currencies[currencie].name}` +
+        "</p>" +
+        "<p>Languages:&nbsp " +
+        `${country.languages[lang]}` +
+        "</p>" +
+        "</div>" +
+        '<div id="border">' +
+        "<span id='noBtn'>Border countries:&nbsp</span>" +
+        '<div id="btnBor">';
+      for (let index = 0; index < country.borders.length; index++) {
+        let name = findCountryNAme(country.borders[index]);
+        expand += '<span class="selectBorder dark">' + `${name}` + "</span>";
+      }
+
+      expand +=
+        "</div>" + "</div>" + "</div>" + "</div>" + "</div>" + "</section>";
+      main.innerHTML = expand;
+    }
+
+    function findCountryNAme(cca3) {
+      let count = -1;
+      do {
+        count++;
+      } while (data[count].cca3 != cca3);
+      return data[count].name.common;
+    }
   });
 
   //============================================================================
 
-  setTimeout(() => {
-    /*
+  /*
       let count = -1;
       do {
         count++;
@@ -141,13 +225,12 @@ window.addEventListener("load", () => {
       console.log("borders: " + data[count].borders);
       console.log("flags: " + data[count].flags.png);
 */
-  }, 500);
 });
 
 /*
 //this code is to implement on the expand card to it get close to the nav (the margin is interfering)
 let sectionNav = document.querySelector("#srch");
-sectionNav.className = "marTop";
+
 sectionNav.className = "marg";
  body.classList.add("stop-scrolling");
  body.classList.remove("stop-scrolling");
