@@ -276,6 +276,8 @@ window.addEventListener("load", () => {
       main.innerHTML = expand;
       evtBackButton();
       bordersBtn();
+      modeHelper();
+      sectionNav.className = "marTop";
     }
 
     function findCountryNAme(cca3) {
