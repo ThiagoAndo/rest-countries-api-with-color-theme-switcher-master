@@ -11,7 +11,6 @@ window.addEventListener("load", () => {
   let myData = {};
   let sectionNav = document.querySelector("#srch");
 
-  // sectionNav.className = "marTop";
 
   async function fetchData() {
     const data = await fetch("https://restcountries.com/v3.1/all");
@@ -28,39 +27,46 @@ window.addEventListener("load", () => {
     //Printing all cards with their respective country ==========================
     let content = "";
     let main = document.querySelector("#main");
-    makeCards();
-    function makeCards() {
-      data.forEach((country) => {
-        content +=
-          " <article class='dark' id='" +
-          `${country.name.common}` +
-          "'>" +
-          "<div style='background-image:" +
-          "url(" +
-          `${country.flags.png}` +
-          ")'" +
-          ">" +
-          "</div>" +
-          "<div>" +
-          "<div class='infoBox'>" +
-          "<h3>" +
-          `${country.name.common}` +
-          "</h3>" +
-          "<p>Population:&nbsp " +
-          `${country.population}` +
-          "</p>" +
-          "<p>Region:&nbsp " +
-          `${country.region}` +
-          "</p>" +
-          "<p>Capital:&nbsp " +
-          `${country.capital}` +
-          "</p>" +
-          "</div>" +
-          "</div>" +
-          "</article>";
-      });
 
-      main.innerHTML = content;
+    makeCards();
+    function makeCards(call) {
+      if (call != "btnCAll") {
+        data.forEach((country) => {
+          content +=
+            " <article class='dark' id='" +
+            `${country.name.common}` +
+            "'>" +
+            "<div style='background-image:" +
+            "url(" +
+            `${country.flags.png}` +
+            ")'" +
+            ">" +
+            "</div>" +
+            "<div>" +
+            "<div class='infoBox'>" +
+            "<h3>" +
+            `${country.name.common}` +
+            "</h3>" +
+            "<p>Population:&nbsp " +
+            `${country.population}` +
+            "</p>" +
+            "<p>Region:&nbsp " +
+            `${country.region}` +
+            "</p>" +
+            "<p>Capital:&nbsp " +
+            `${country.capital}` +
+            "</p>" +
+            "</div>" +
+            "</div>" +
+            "</article>";
+        });
+        main.innerHTML = content;
+      } else {
+        main.innerHTML = content;
+        sectionNav.className = "marg";
+      }
+
+      cardEfect();
     }
 
     //Addinng functionality to Button mode ===============================
@@ -85,7 +91,7 @@ window.addEventListener("load", () => {
       "user strict";
       if (btnTxt.innerHTML === "Light Mode") {
         btnTxt.innerHTML = "Dark Mode";
-          classes("light", "blight");
+        classes("light", "blight");
         btnMode.style.backgroundColor = "#ffffff";
         addEvent("#fafafa", "#ffffff", "underline black", "none");
         input.classList.add("your-class");
@@ -100,61 +106,74 @@ window.addEventListener("load", () => {
       }
     }
 
-    function classes(class1, class2) {
-      const cards = document.querySelectorAll("article");
-      nav.className = class1;
-      body.className = class2;
-      input.className = class1;
-      inputSelect.className = class1;
-      cards.forEach((card) => {
-        card.className = class1;
-      });
-      try {
-        const expMode = document.querySelector("#expand");
-        const expModeBtn = document.querySelectorAll(".selectBorder");
-        const ModeBtnBack = document.querySelector(".btnExp");
-        btnsExpand(ModeBtnBack);
-
-        expModeBtn.forEach((btn) => {
-          btnsExpand(btn);
+    function classes(class1, class2, call) {
+      if (call === undefined) {
+        const cards = document.querySelectorAll("article");
+        nav.className = class1;
+        body.className = class2;
+        input.className = class1;
+        inputSelect.className = class1;
+        cards.forEach((card) => {
+          card.className = class1;
         });
+        classes2();
+      } else {
+        classes2();
+      }
 
-        function btnsExpand(obj = {}) {
-          const attr = obj.getAttribute("class");
-          const cls2 = attr.split(" ");
-          console.log(cls2[1]);
-          obj.classList.remove(cls2[1]);
-          obj.classList.add(class1);
-        }
+      function classes2() {
+        try {
+          const expMode = document.querySelector("#expand");
+          const expModeBtn = document.querySelectorAll(".selectBorder");
+          const ModeBtnBack = document.querySelector(".btnExp");
+          btnsExpand(ModeBtnBack);
 
-        expMode.className = class1;
-      } catch (err) {}
+          expModeBtn.forEach((btn) => {
+            btnsExpand(btn);
+          });
+
+          function btnsExpand(obj = {}) {
+            const attr = obj.getAttribute("class");
+            const cls2 = attr.split(" ");
+            console.log(cls2[1]);
+            obj.classList.remove(cls2[1]);
+            obj.classList.add(class1);
+          }
+
+          expMode.className = class1;
+        } catch (err) {}
+      }
     }
 
     //Addinng effect on the cards when the mouse is over ===============================
-    const cards = document.querySelectorAll("article");
-    cards.forEach((card) => {
-      card.addEventListener("mouseover", function () {
-        if (btnTxt.innerHTML === "Light Mode") {
-          card.style.boxShadow = "0px 0px 6px 0px white";
-        } else {
-          card.style.boxShadow = "0px 0px 6px 0px black";
-        }
-      });
-      card.addEventListener("mouseout", function () {
-        card.style.boxShadow = "0px 0px 0px 0px";
-      });
+    cardEfect();
+    function cardEfect() {
+      const cards = document.querySelectorAll("article");
+      cards.forEach((card) => {
+        card.addEventListener("mouseover", function () {
+          if (btnTxt.innerHTML === "Light Mode") {
+            card.style.boxShadow = "0px 0px 6px 0px white";
+          } else {
+            card.style.boxShadow = "0px 0px 6px 0px black";
+          }
+        });
+        card.addEventListener("mouseout", function () {
+          card.style.boxShadow = "0px 0px 0px 0px";
+        });
 
-      //Creating screen with a clicked country expanded =================================
-      card.addEventListener("click", function () {
-        sectionNav.className = "marTop";
-        let thisCountry = findCountry(card.id);
-        createExpandedCard(thisCountry);
-        setInterval(() => {
-          mode("expand");
-        }, 300);
+        //Creating screen with a clicked country expanded =================================
+        card.addEventListener("click", function () {
+           sectionNav.className = "marTop";
+          let thisCountry = findCountry(card.id);
+          createExpandedCard(thisCountry);
+          if (btnTxt.innerHTML === "Light Mode") {
+            classes("dark", "bDark", "card");
+          } else {
+            classes("light", "blight", "card");
+          }
+        });
       });
-    });
+    }
 
     function findCountry(country) {
       let count = -1;
@@ -166,8 +185,31 @@ window.addEventListener("load", () => {
 
     function createExpandedCard(country) {
       let expand = "";
-      const currencie = Object.keys(country.currencies)[0];
-      const lang = Object.keys(country.languages)[0];
+      let currencie = "";
+      let crr = "";
+      let lang = "";
+      let lag = "";
+      let subReg = "";
+      let capital = "";
+      if (
+        country.currencies &&
+        country.languages &&
+        country.subregion &&
+        country.capital
+      ) {
+        currencie = Object.keys(country.currencies)[0];
+        lang = Object.keys(country.languages)[0];
+        lag = country.languages[lang];
+        crr = country.currencies[currencie].name;
+        subReg = country.subregion;
+        capital = country.capital;
+      } else {
+        crr = "No Currencie";
+        lag = "Unknow";
+        subReg = "No Subregion";
+        capital = "No Capital";
+      }
+
       expand +=
         '<section id="expand" class="bDark">' +
         "<div>" +
@@ -192,10 +234,10 @@ window.addEventListener("load", () => {
         `${country.region}` +
         "</p>" +
         "<p>subregion:&nbsp " +
-        `${country.subregion}` +
+        `${subReg}` +
         "</p>" +
         "<p>Capital:&nbsp " +
-        `${country.capital}` +
+        `${capital}` +
         "</p>" +
         "</div>" +
         '<div class="inf">' +
@@ -204,10 +246,10 @@ window.addEventListener("load", () => {
         `${country.tld}` +
         "</p>" +
         "<p>Currencies:&nbsp " +
-        `${country.currencies[currencie].name}` +
+        `${crr}` +
         "</p>" +
         "<p>Languages:&nbsp " +
-        `${country.languages[lang]}` +
+        `${lag}` +
         "</p>" +
         "</div>" +
         '<div id="border">' +
@@ -240,7 +282,7 @@ window.addEventListener("load", () => {
     function evtBackButton() {
       let bckBtn = document.querySelector(".btnExp");
       bckBtn.addEventListener("click", function () {
-        console.log(bckBtn.innerHTML);
+        makeCards("btnCAll");
       });
     }
   });

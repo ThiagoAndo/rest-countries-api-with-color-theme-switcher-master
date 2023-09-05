@@ -173,6 +173,7 @@ article div:last-of-type div p {
   height: 50vh;
   background-size: cover;
   background-position: center;
+  box-shadow: 0px 0px 4px 0px black;
 }
 #expand #holdInf {
   display: grid;
@@ -223,7 +224,7 @@ article div:last-of-type div p {
   align-items: center;
   justify-content: center;
   border-radius: 0.3rem;
-  margin-left: .5rem;
+  margin-left: 0.5rem;
   margin-bottom: 1rem;
   font-size: 0.7rem;
   box-shadow: 0px 0px 4px 0px black;
