@@ -1,97 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-    <title>Document</title>
-  </head>
 
-  <body class="bDark">
-    <nav class="dark">
-      <div id="mainTxt">
-        <h2>Where in the world?</h2>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Document</title>
+</head>
+
+<body class="bDark">
+  <nav class="dark">
+    <div id="mainTxt">
+      <h2>Where in the world?</h2>
+    </div>
+    <div id="btn">
+      <div class="filt"></div>
+      <div>
+        <p>Light Mode</p>
       </div>
-      <div id="btn">
-        <div class="filt"></div>
-        <div>
-          <p>Light Mode</p>
+    </div>
+  </nav>
+  <main>
+
+    <section id="srch" class="marg">
+      <form role="search-role" id="form">
+        <div class="autocomplete"></div>
+        <input class="dark" type="text" id="myInput" name="myCountry" placeholder="&#61442; Search for a country..."
+          aria-label="Search through the content of the site" />
         </div>
-      </div>
-    </nav>
-    <main>
-      <!-- <section id="expand">
-        <div>
-          <div class="btnExp dark"><span>⬅️&nbsp&nbspBack</span></div>
-          <div id="contExp">
-            <div id="flag"></div>
-            <div id="holdInf">
-              <div class="inf">
-                <h3>Brazil</h3>
-                <p>Population</p>
-                <p>Region</p>
-                <p>Capital</p>
-                <p>Capital</p>
-              </div>
-              <div class="inf">
-                <h3>&nbsp</h3>
-                <p>Population</p>
-                <p>Region</p>
-                <p>Capital</p>
-              </div>
-              <div id="border">
-                <span id="noBtn">Border countries:&nbsp</span>
-                <div id="btnBor">
-                  <span class="selectBorder dark">countries:&nbsp</span>
-                  <span class="selectBorder dark">countries:&nbsp</span>
-                  <span class="selectBorder dark">countries:&nbsp</span>
-                  <span class="selectBorder dark">countries:&nbsp</span>
-                  <span class="selectBorder dark">countries:&nbsp</span>
-                  <span class="selectBorder dark">countries:&nbsp</span>
-                  <span class="selectBorder dark">countries:&nbsp</span>
-                  <span class="selectBorder dark">countries:&nbsp</span>
-                  <span class="selectBorder dark">countries:&nbsp</span>
-                  <span class="selectBorder dark">countries:&nbsp</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> -->
-      <section id="srch" class="marg">
-        <form role="search-role" id="form">
-          <input
-            class="dark"
-            type="search"
-            id="query-details"
-            name="h"
-            placeholder="&#61442; Search for a country..."
-            aria-label="Search through the content of the site"
-          />
-        </form>
-        <form action="/" id="formSelec">
-          <select name="type" class="dark">
-            <option value="" disabled selected hidden>Filter by Region</option>
-            <option value="education">Education</option>
-            <option value="charity">Charity</option>
-            <option value="recreational">Recreational</option>
-            <option value="relaxation">Relaxation</option>
-          </select>
-        </form>
-      </section>
-      <section id="main"></section>
-    </main>
-    <script src="script.js"></script>
-  </body>
+      </form>
+      <form action="/" id="formSelec">
+        <select name="type" class="dark">
+          <option value="" disabled selected hidden>Filter by Region</option>
+          <option value="education">Education</option>
+          <option value="charity">Charity</option>
+          <option value="recreational">Recreational</option>
+          <option value="relaxation">Relaxation</option>
+        </select>
+      </form>
+    </section>
+    <section id="main"></section>
+  </main>
+  <script src="script.js"></script>
+</body>
+
 </html>

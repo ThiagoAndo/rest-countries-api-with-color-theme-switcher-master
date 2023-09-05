@@ -64,6 +64,9 @@ nav {
 .marg {
   margin-top: 4rem;
 }
+#form {
+  position: relative;
+}
 #form > input {
   padding: 1rem;
   padding-left: 2rem;
@@ -73,6 +76,7 @@ nav {
   width: 30rem;
   border-radius: 0.25rem;
   margin-left: 5rem;
+  font-size: 1rem;
 }
 ::placeholder {
   color: #ffffff;
@@ -269,6 +273,39 @@ article div:last-of-type div p {
 .stop-scrolling {
   height: 100%;
   overflow: hidden;
+}
+
+/* Auto Complete================================ */
+
+.autocomplete {
+  width: 30rem;
+}
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  top: 100%;
+  left: 5rem;
+  right: 0;
+}
+
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+ 
+}
+
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+  font-weight: 900;
+}
+
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+  background-color: DodgerBlue !important;
+  color: #ffffff;
 }
 
 @media only screen and (max-width: 1440px) {

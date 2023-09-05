@@ -4,13 +4,15 @@ window.addEventListener("load", () => {
   const svg = document.querySelector("#btn div:first-of-type");
   const nav = document.querySelector("nav");
   const body = document.querySelector("body");
+  let form = document.querySelector("#form");
   const input = document.querySelector("#form > input");
   const inputSelect = document.querySelector("#formSelec > select");
   const placeholder = document.querySelector("#form > input::placeholder");
   const btnTxt = document.querySelector("#btn p");
+  const sectionNav = document.querySelector("#srch");
+  let countries = [];
+  let modeClass = "dark";
   let myData = {};
-  let sectionNav = document.querySelector("#srch");
-
 
   async function fetchData() {
     const data = await fetch("https://restcountries.com/v3.1/all");
@@ -32,6 +34,7 @@ window.addEventListener("load", () => {
     function makeCards(call) {
       if (call != "btnCAll") {
         data.forEach((country) => {
+          countries.push(country.name.common);
           content +=
             " <article class='dark' id='" +
             `${country.name.common}` +
@@ -65,7 +68,6 @@ window.addEventListener("load", () => {
         main.innerHTML = content;
         sectionNav.className = "marg";
       }
-
       cardEfect();
     }
 
@@ -73,11 +75,11 @@ window.addEventListener("load", () => {
     addEvent("#202c37", "#2b3945 ", "underline black", "none");
 
     function addEvent(color1, color2, txtType1, txtType2) {
-      btnMode.addEventListener("mouseover", function () {
+      btnMode.addEventListener("mouseover", () => {
         btnMode.style.backgroundColor = color1;
         buttonTxt.style.textDecoration = txtType1;
       });
-      btnMode.addEventListener("mouseout", function () {
+      btnMode.addEventListener("mouseout", () => {
         btnMode.style.backgroundColor = color2;
         buttonTxt.style.textDecoration = txtType2;
       });
@@ -91,6 +93,7 @@ window.addEventListener("load", () => {
       "user strict";
       if (btnTxt.innerHTML === "Light Mode") {
         btnTxt.innerHTML = "Dark Mode";
+        modeClass = "light";
         classes("light", "blight");
         btnMode.style.backgroundColor = "#ffffff";
         addEvent("#fafafa", "#ffffff", "underline black", "none");
@@ -98,6 +101,7 @@ window.addEventListener("load", () => {
         svg.classList.remove("filt");
       } else {
         btnTxt.innerHTML = "Light Mode";
+        modeClass = "dark";
         classes("dark", "bDark");
         input.classList.remove("your-class");
         svg.className = "filt";
@@ -135,7 +139,6 @@ window.addEventListener("load", () => {
           function btnsExpand(obj = {}) {
             const attr = obj.getAttribute("class");
             const cls2 = attr.split(" ");
-            console.log(cls2[1]);
             obj.classList.remove(cls2[1]);
             obj.classList.add(class1);
           }
@@ -150,29 +153,33 @@ window.addEventListener("load", () => {
     function cardEfect() {
       const cards = document.querySelectorAll("article");
       cards.forEach((card) => {
-        card.addEventListener("mouseover", function () {
+        card.addEventListener("mouseover", () => {
           if (btnTxt.innerHTML === "Light Mode") {
             card.style.boxShadow = "0px 0px 6px 0px white";
           } else {
             card.style.boxShadow = "0px 0px 6px 0px black";
           }
         });
-        card.addEventListener("mouseout", function () {
+        card.addEventListener("mouseout", () => {
           card.style.boxShadow = "0px 0px 0px 0px";
         });
 
         //Creating screen with a clicked country expanded =================================
-        card.addEventListener("click", function () {
-           sectionNav.className = "marTop";
+        card.addEventListener("click", () => {
+          sectionNav.className = "marTop";
           let thisCountry = findCountry(card.id);
           createExpandedCard(thisCountry);
-          if (btnTxt.innerHTML === "Light Mode") {
-            classes("dark", "bDark", "card");
-          } else {
-            classes("light", "blight", "card");
-          }
+          modeHelper();
         });
       });
+    }
+
+    function modeHelper() {
+      if (btnTxt.innerHTML === "Light Mode") {
+        classes("dark", "bDark", "card");
+      } else {
+        classes("light", "blight", "card");
+      }
     }
 
     function findCountry(country) {
@@ -268,6 +275,7 @@ window.addEventListener("load", () => {
         "</div>" + "</div>" + "</div>" + "</div>" + "</div>" + "</section>";
       main.innerHTML = expand;
       evtBackButton();
+      bordersBtn();
     }
 
     function findCountryNAme(cca3) {
@@ -281,41 +289,125 @@ window.addEventListener("load", () => {
     //Adding event to Back button==============================================
     function evtBackButton() {
       let bckBtn = document.querySelector(".btnExp");
-      bckBtn.addEventListener("click", function () {
+      bckBtn.addEventListener("click", () => {
         makeCards("btnCAll");
       });
     }
+
+    //Adding event to borders buttons ==========================================
+    function bordersBtn() {
+      const buttonsBorder = document.querySelectorAll(".selectBorder");
+      buttonsBorder.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          createExpandedCard(findCountry(btn.innerHTML));
+          modeHelper();
+        });
+      });
+    }
+
+    //Adding event to search ==========================================
+
+    form.onkeydown = (event) => {
+      if (event.key === "Enter") {
+        let conf;
+        conf = countries.indexOf(input.value);
+        if (conf != -1) {
+          event.preventDefault();
+          createExpandedCard(findCountry(input.value));
+          input.value = "";
+        } else {
+          alert(
+            "There is no Country Called : " +
+              input.value +
+              "\n\nYou can type another name."
+          );
+        }
+      }
+    };
+
+    function autocomplete(inp, arr) {
+      var currentFocus;
+      inp.addEventListener("input", function (e) {
+        var a,
+          b,
+          i,
+          val = this.value;
+        closeAllLists();
+        if (!val) {
+          return false;
+        }
+        currentFocus = -1;
+        a = document.createElement("DIV");
+        a.setAttribute("id", this.id + "autocomplete-list");
+        a.setAttribute("class", "autocomplete-items");
+        this.parentNode.appendChild(a);
+        for (i = 0; i < arr.length; i++) {
+          if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+            b = document.createElement("DIV");
+            b.setAttribute("class", `${modeClass}`);
+
+            b.innerHTML =
+              "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+            b.innerHTML += arr[i].substr(val.length);
+            b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+            b.addEventListener("click", function (e) {
+              inp.value = this.getElementsByTagName("input")[0].value;
+              closeAllLists();
+
+              setTimeout(() => {
+                createExpandedCard(
+                  findCountry(this.getElementsByTagName("input")[0].value)
+                );
+              }, 300);
+            });
+            a.appendChild(b);
+          }
+        }
+      });
+      inp.addEventListener("keydown", function (e) {
+        var x = document.getElementById(this.id + "autocomplete-list");
+        if (x) x = x.getElementsByTagName("div");
+        if (e.keyCode == 40) {
+          currentFocus++;
+          addActive(x);
+        } else if (e.keyCode == 38) {
+          //up
+          currentFocus--;
+          addActive(x);
+        } else if (e.keyCode == 13) {
+          e.preventDefault();
+          if (currentFocus > -1) {
+            if (x) x[currentFocus].click();
+          }
+        }
+      });
+      function addActive(x) {
+        if (!x) return false;
+        removeActive(x);
+        if (currentFocus >= x.length) currentFocus = 0;
+        if (currentFocus < 0) currentFocus = x.length - 1;
+        x[currentFocus].classList.add("autocomplete-active");
+      }
+      function removeActive(x) {
+        for (var i = 0; i < x.length; i++) {
+          x[i].classList.remove("autocomplete-active");
+        }
+      }
+      function closeAllLists(elmnt) {
+        var x = document.getElementsByClassName("autocomplete-items");
+        for (var i = 0; i < x.length; i++) {
+          if (elmnt != x[i] && elmnt != inp) {
+            x[i].parentNode.removeChild(x[i]);
+          }
+        }
+      }
+      document.addEventListener("click", function (e) {
+        closeAllLists(e.target);
+      });
+    }
+
+    autocomplete(document.getElementById("myInput"), countries);
   });
 
   //============================================================================
-
-  /*
-      let count = -1;
-      do {
-        count++;
-      } while (data[count].name.common != "Brazil");
-      console.log(data[count]);
-      console.log("name: " + data[count].name.common);
-      console.log("Native Name: " + data[count].altSpellings[2]);
-      console.log("population: " + data[count].population);
-      console.log("region: " + data[count].region);
-      console.log("subregion: " + data[count].subregion);
-      console.log("capital: " + data[count].capital);
-      console.log("topLevelDomain: " + data[count].topLevelDomain);
-       const currencie = Object.keys(data[count].currencies)[0]
-       console.log(data[count].currencies[currencie].name);
-      const lang = Object.keys(data[count].languages)[0];
-      console.log("languages: " + data[count].languages[lang]);
-      console.log("borders: " + data[count].borders);
-      console.log("flags: " + data[count].flags.png);
-*/
 });
-
-/*
-//this code is to implement on the expand card to it get close to the nav (the margin is interfering)
-let sectionNav = document.querySelector("#srch");
-
-sectionNav.className = "marg";
- body.classList.add("stop-scrolling");
- body.classList.remove("stop-scrolling");
- */
