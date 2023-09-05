@@ -23,46 +23,45 @@ window.addEventListener("load", () => {
     myData = { ...data };
 
     //Sorting the cards by aphabetic order ==========================
-
     data.sort((a, b) => (a.name.common > b.name.common ? 1 : -1));
 
     //Printing all cards with their respective country ==========================
     let content = "";
     let main = document.querySelector("#main");
-    data.forEach((country) => {
-      content +=
-        " <article class='dark' id='" +
-        `${country.name.common}` +
-        "'>" +
-        "<div style='background-image:" +
-        "url(" +
-        `${country.flags.png}` +
-        ")'" +
-        ">" +
-        "</div>" +
-        "<div>" +
-        "<div class='infoBox'>" +
-        "<h3>" +
-        `${country.name.common}` +
-        "</h3>" +
-        "<p>Population:&nbsp " +
-        `${country.population}` +
-        "</p>" +
-        "<p>Region:&nbsp " +
-        `${country.region}` +
-        "</p>" +
-        "<p>Capital:&nbsp " +
-        `${country.capital}` +
-        "</p>" +
-        "</div>" +
-        "</div>" +
-        "</article>";
-    });
+    makeCards();
+    function makeCards() {
+      data.forEach((country) => {
+        content +=
+          " <article class='dark' id='" +
+          `${country.name.common}` +
+          "'>" +
+          "<div style='background-image:" +
+          "url(" +
+          `${country.flags.png}` +
+          ")'" +
+          ">" +
+          "</div>" +
+          "<div>" +
+          "<div class='infoBox'>" +
+          "<h3>" +
+          `${country.name.common}` +
+          "</h3>" +
+          "<p>Population:&nbsp " +
+          `${country.population}` +
+          "</p>" +
+          "<p>Region:&nbsp " +
+          `${country.region}` +
+          "</p>" +
+          "<p>Capital:&nbsp " +
+          `${country.capital}` +
+          "</p>" +
+          "</div>" +
+          "</div>" +
+          "</article>";
+      });
 
-    (function () {
-      "user strict";
       main.innerHTML = content;
-    })();
+    }
 
     //Addinng functionality to Button mode ===============================
     addEvent("#202c37", "#2b3945 ", "underline black", "none");
@@ -79,43 +78,14 @@ window.addEventListener("load", () => {
     }
 
     btnMode.onclick = () => {
-      const cards = document.querySelectorAll("article");
+      mode();
+    };
 
-      function classes(class1, class2) {
-        nav.className = class1;
-        body.className = class2;
-        input.className = class1;
-        inputSelect.className = class1;
-        cards.forEach((card) => {
-          card.className = class1;
-        });
-        try {
-          const expMode = document.querySelector("#expand");
-          const expModeBtn = document.querySelectorAll(".selectBorder");
-          const ModeBtnBack = document.querySelector(".btnExp");
-          btnsExpand(ModeBtnBack);
-
-          expModeBtn.forEach((btn) => {
-            btnsExpand(btn);
-          });
-
-          function btnsExpand(obj = {}) {
-            const attr = obj.getAttribute("class");
-            const cls2 = attr.split(" ");
-            console.log(cls2[1]);
-            obj.classList.remove(cls2[1]);
-            obj.classList.add(class1);
-          }
-
-          expMode.className = class1;
-        } catch (err) {
-          console.log(err);
-        }
-      }
-
+    function mode() {
+      "user strict";
       if (btnTxt.innerHTML === "Light Mode") {
         btnTxt.innerHTML = "Dark Mode";
-        classes("light", "blight");
+          classes("light", "blight");
         btnMode.style.backgroundColor = "#ffffff";
         addEvent("#fafafa", "#ffffff", "underline black", "none");
         input.classList.add("your-class");
@@ -126,10 +96,40 @@ window.addEventListener("load", () => {
         input.classList.remove("your-class");
         svg.className = "filt";
         btnMode.style.backgroundColor = "#2b3945";
-
         addEvent("#202c37", "#2b3945", "underline black", "none");
       }
-    };
+    }
+
+    function classes(class1, class2) {
+      const cards = document.querySelectorAll("article");
+      nav.className = class1;
+      body.className = class2;
+      input.className = class1;
+      inputSelect.className = class1;
+      cards.forEach((card) => {
+        card.className = class1;
+      });
+      try {
+        const expMode = document.querySelector("#expand");
+        const expModeBtn = document.querySelectorAll(".selectBorder");
+        const ModeBtnBack = document.querySelector(".btnExp");
+        btnsExpand(ModeBtnBack);
+
+        expModeBtn.forEach((btn) => {
+          btnsExpand(btn);
+        });
+
+        function btnsExpand(obj = {}) {
+          const attr = obj.getAttribute("class");
+          const cls2 = attr.split(" ");
+          console.log(cls2[1]);
+          obj.classList.remove(cls2[1]);
+          obj.classList.add(class1);
+        }
+
+        expMode.className = class1;
+      } catch (err) {}
+    }
 
     //Addinng effect on the cards when the mouse is over ===============================
     const cards = document.querySelectorAll("article");
@@ -145,23 +145,24 @@ window.addEventListener("load", () => {
         card.style.boxShadow = "0px 0px 0px 0px";
       });
 
-      //Creating screen with a clicked county expanded =================================
+      //Creating screen with a clicked country expanded =================================
       card.addEventListener("click", function () {
         sectionNav.className = "marTop";
         let thisCountry = findCountry(card.id);
         createExpandedCard(thisCountry);
-        const cca3Btn = document.querySelectorAll(".selectBorder");
+        setInterval(() => {
+          mode("expand");
+        }, 300);
       });
-     
-    });  
+    });
 
-     function findCountry(country) {
-       let count = -1;
-       do {
-         count++;
-       } while (data[count].name.common != country);
-       return data[count];
-     }
+    function findCountry(country) {
+      let count = -1;
+      do {
+        count++;
+      } while (data[count].name.common != country);
+      return data[count];
+    }
 
     function createExpandedCard(country) {
       let expand = "";
@@ -224,6 +225,7 @@ window.addEventListener("load", () => {
       expand +=
         "</div>" + "</div>" + "</div>" + "</div>" + "</div>" + "</section>";
       main.innerHTML = expand;
+      evtBackButton();
     }
 
     function findCountryNAme(cca3) {
@@ -232,6 +234,14 @@ window.addEventListener("load", () => {
         count++;
       } while (data[count].cca3 != cca3);
       return data[count].name.common;
+    }
+
+    //Adding event to Back button==============================================
+    function evtBackButton() {
+      let bckBtn = document.querySelector(".btnExp");
+      bckBtn.addEventListener("click", function () {
+        console.log(bckBtn.innerHTML);
+      });
     }
   });
 
