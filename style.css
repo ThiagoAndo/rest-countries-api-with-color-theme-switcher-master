@@ -99,7 +99,6 @@ nav {
 /* Main & Cards========================== */
 #main {
   width: 100%;
-  overflow: hidden;
   padding-bottom: 5.625rem;
 }
 
@@ -142,7 +141,7 @@ article div:last-of-type div p {
 /* Expand Section========================== */
 #expand {
   width: 100%;
-  height: 91.5vh;
+  height: 104vh;
   position: absolute;
   right: 0;
   top: 0em;
@@ -177,6 +176,7 @@ article div:last-of-type div p {
   height: 50vh;
   margin-top: 3rem;
   cursor: pointer;
+  justify-content: space-evenly;
 }
 #expand #flag {
   width: 35rem;
@@ -382,7 +382,7 @@ article div:last-of-type div p {
   #expand {
     width: 340px;
     background-color: #202c37;
-    height: 1140px;
+    height: 1020px;
   }
   .btnExp {
     width: 130px;
@@ -444,9 +444,7 @@ article div:last-of-type div p {
     font-size: 12px;
     width: 401px;
   }
-  main {
-    overflow: hidden;
-  }
+
   #srch {
     display: flex;
     flex-direction: column;
@@ -494,5 +492,64 @@ article div:last-of-type div p {
 
   #btn div:first-of-type {
     margin-left: 56px;
+  }
+  /* Expand screen======================================= */
+  #expand {
+    width: 400px;
+    background-color: #202c37;
+    height: 1020px;
+  }
+  .btnExp {
+    width: 130px;
+    height: 35px;
+  }
+  #expand #contExp {
+    flex-direction: column;
+    width: 100%;
+    height: 98vh;
+    margin-top: 70px;
+  }
+  #expand #flag {
+    width: 100%;
+    height: 350px;
+  }
+
+  #expand #holdInf {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 2fr;
+    width: 300px;
+  }
+
+  #holdInf #border {
+    margin-left: 0px;
+    margin-top: 5rem;
+    grid-area: 3/1/4/2;
+    grid-template-columns: 1fr;
+    margin-top: 100px;
+  }
+  #holdInf #border #noBtn {
+    height: 50px;
+  }
+
+  #holdInf div:first-child {
+    margin-top: 50px;
+  }
+
+  #holdInf div:first-child h1 {
+    margin-bottom: 18px;
+  }
+  #holdInf div:nth-child(2) {
+    margin: 0px 0px -60px 0px;
+    height: 105px;
+    gap: 10px;
+  }
+  #holdInf .inf {
+    margin-left: 0px;
+  }
+
+  #holdInf #border .selectBorder {
+    width: 90px;
+    margin-left: 0;
+    margin-bottom: 0;
   }
 }
