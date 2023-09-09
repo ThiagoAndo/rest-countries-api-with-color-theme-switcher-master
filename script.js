@@ -13,6 +13,7 @@ window.addEventListener("load", () => {
   const sectionNav = document.querySelector("#srch");
   const mainTxt = document.querySelector("#mainTxt");
   const x = window.matchMedia("(min-width: 740px)");
+  const y = window.matchMedia("(max-width: 401px)");
 
   const countries = [];
   let modeClass = "dark";
@@ -84,13 +85,13 @@ window.addEventListener("load", () => {
             "<h3>" +
             `${country.name.common}` +
             "</h3>" +
-            "<p>Population:&nbsp " +
+            "<p><strong>Population:</strong>&nbsp " +
             `${country.population}` +
             "</p>" +
-            "<p>Region:&nbsp " +
+            "<p><strong>Region:</strong>&nbsp " +
             `${country.region}` +
             "</p>" +
-            "<p>Capital:&nbsp " +
+            "<p><strong>Capital:</strong>&nbsp " +
             `${country.capital}` +
             "</p>" +
             "</div>" +
@@ -267,33 +268,33 @@ window.addEventListener("load", () => {
         "<h1>" +
         `${country.name.common}` +
         "</h1>" +
-        "<p>Population:&nbsp " +
+        "<p><strong>Population:&nbsp</strong> " +
         `${country.population}` +
         "</p>" +
-        "<p>Region:&nbsp " +
+        "<p><strong>Region:</strong>&nbsp " +
         `${country.region}` +
         "</p>" +
-        "<p>subregion:&nbsp " +
+        "<p><strong>subregion:</strong>&nbsp " +
         `${subReg}` +
         "</p>" +
-        "<p>Capital:&nbsp " +
+        "<p><strong>Capital:</strong>&nbsp " +
         `${capital}` +
         "</p>" +
         "</div>" +
         '<div class="inf">' +
         "<h1>&nbsp</h1>" +
-        "<p>Top Level Domain: &nbsp" +
+        "<p><strong>Top Level Domain:</strong> &nbsp" +
         `${country.tld}` +
         "</p>" +
-        "<p>Currencies:&nbsp " +
+        "<p><strong>Currencies:</strong>&nbsp " +
         `${crr}` +
         "</p>" +
-        "<p>Languages:&nbsp " +
+        "<p><strong>Languages:</strong>&nbsp " +
         `${lag}` +
         "</p>" +
         "</div>" +
         '<div id="border">' +
-        "<span id='noBtn'>Border countries:&nbsp</span>" +
+        "<span id='noBtn'><strong>Border countries:</strong>&nbsp</span>" +
         '<div id="btnBor">';
       if (country.borders) {
         for (let index = 0; index < country.borders.length; index++) {

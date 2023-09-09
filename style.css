@@ -313,7 +313,10 @@ article div:last-of-type div p {
   color: #ffffff;
 }
 
-@media only screen and (max-width: 1440px) {
+@media (min-width: 1700px) and (max-width: 1900px) {
+}
+
+@media (min-width: 402px) and (max-width: 1440px) {
   html {
     height: 100%;
   }
@@ -322,10 +325,10 @@ article div:last-of-type div p {
   }
 }
 
-@media (min-width: 340px) and (max-width: 415px) {
+@media (max-width: 340px) {
   body {
     font-size: 12px;
-    width: 389px;
+    width: 340px;
   }
 
   #srch {
@@ -350,6 +353,123 @@ article div:last-of-type div p {
 
   article {
     width: 270px;
+    height: 450px;
+    margin-left: 33px;
+  }
+
+  article > div:first-of-type {
+    height: 250px;
+  }
+  article div:last-of-type div {
+    margin: 34px 24px 0px 24px;
+  }
+  article div:last-of-type div h3 {
+    margin-top: 15px;
+    margin-bottom: 22px;
+  }
+  #mainTxt {
+    margin-left: 10px;
+  }
+  #btn {
+    margin-right: 10px;
+    justify-content: space-around;
+  }
+
+  #btn div:first-of-type {
+    margin-left: 56px;
+  }
+  /* Expand screen======================================= */
+  #expand {
+    width: 340px;
+    background-color: #202c37;
+    height: 1140px;
+  }
+  .btnExp {
+    width: 130px;
+    height: 35px;
+  }
+  #expand #contExp {
+    flex-direction: column;
+    width: 100%;
+    height: 98vh;
+    margin-top: 70px;
+  }
+  #expand #flag {
+    width: 100%;
+    height: 350px;
+  }
+
+  #expand #holdInf {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 2fr;
+    width: 300px;
+  }
+
+  #holdInf #border {
+    margin-left: 0px;
+    margin-top: 5rem;
+    grid-area: 3/1/4/2;
+    grid-template-columns: 1fr;
+    margin-top: 100px;
+  }
+  #holdInf #border #noBtn {
+    height: 50px;
+  }
+
+  #holdInf div:first-child {
+    margin-top: 50px;
+  }
+
+  #holdInf div:first-child h1 {
+    margin-bottom: 18px;
+  }
+  #holdInf div:nth-child(2) {
+    margin: 0px 0px -60px 0px;
+    height: 105px;
+    gap: 10px;
+  }
+  #holdInf .inf {
+    margin-left: 0px;
+  }
+
+  #holdInf #border .selectBorder {
+    width: 90px;
+    margin-left: 0;
+    margin-bottom: 0;
+  }
+}
+
+@media (min-width: 341px) and (max-width: 401px) {
+  body {
+    font-size: 12px;
+    width: 401px;
+  }
+  main {
+    overflow: hidden;
+  }
+  #srch {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    width: 100%;
+  }
+  nav {
+    width: 100%;
+  }
+  #form > input {
+    width: 364px;
+    padding: 5px;
+    margin-left: 20px;
+  }
+
+  #formSelec > select {
+    margin-left: 20px;
+    margin-top: 40px;
+    width: 180px;
+  }
+
+  article {
+    width: 337px;
     height: 450px;
     margin-left: 33px;
   }
