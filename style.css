@@ -324,44 +324,55 @@ article div:last-of-type div p {
 
 @media (min-width: 340px) and (max-width: 415px) {
   body {
-    font-size: 16px;
-    width: 559px;
+    font-size: 12px;
+    width: 389px;
   }
 
   #srch {
     display: flex;
     flex-direction: column;
+    margin-top: 20px;
     width: 100%;
   }
+  nav {
+    width: 340px;
+  }
   #form > input {
-    margin-left: 40px;
+    width: 300px;
+    padding: 5px;
+    margin-left: 20px;
   }
 
   #formSelec > select {
-    margin-left: 40px;
+    margin-left: 20px;
     margin-top: 40px;
   }
 
   article {
-    width: 380px;
+    width: 270px;
     height: 450px;
-    margin-left: 88px;
+    margin-left: 33px;
   }
 
   article > div:first-of-type {
-    height: 260px;
+    height: 250px;
   }
   article div:last-of-type div {
-    margin: 24px 24px 0px 24px;
+    margin: 34px 24px 0px 24px;
   }
   article div:last-of-type div h3 {
     margin-top: 15px;
     margin-bottom: 22px;
   }
   #mainTxt {
-    margin-left: 30px;
+    margin-left: 10px;
   }
   #btn {
-    margin-right: 30px;
+    margin-right: 10px;
+    justify-content: space-around;
+  }
+
+  #btn div:first-of-type {
+    margin-left: 56px;
   }
 }

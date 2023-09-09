@@ -12,6 +12,8 @@ window.addEventListener("load", () => {
   const btnTxt = document.querySelector("#btn p");
   const sectionNav = document.querySelector("#srch");
   const mainTxt = document.querySelector("#mainTxt");
+  const x = window.matchMedia("(min-width: 740px)");
+
   const countries = [];
   let modeClass = "dark";
   let myData = {};
@@ -105,14 +107,16 @@ window.addEventListener("load", () => {
     addEvent("#202c37", "#2b3945 ", "underline white", "none");
 
     function addEvent(color1, color2, txtType1, txtType2) {
-      btnMode.addEventListener("mouseover", () => {
-        btnMode.style.backgroundColor = color1;
-        buttonTxt.style.textDecoration = txtType1;
-      });
-      btnMode.addEventListener("mouseout", () => {
-        btnMode.style.backgroundColor = color2;
-        buttonTxt.style.textDecoration = txtType2;
-      });
+      if (x.matches) {
+        btnMode.addEventListener("mouseover", () => {
+          btnMode.style.backgroundColor = color1;
+          buttonTxt.style.textDecoration = txtType1;
+        });
+        btnMode.addEventListener("mouseout", () => {
+          btnMode.style.backgroundColor = color2;
+          buttonTxt.style.textDecoration = txtType2;
+        });
+      }
     }
 
     btnMode.onclick = () => {
