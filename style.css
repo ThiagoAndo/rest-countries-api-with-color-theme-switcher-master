@@ -322,7 +322,7 @@ article div:last-of-type div p {
   }
 }
 
-@media (min-width: 340px) and (max-width: 400px) {
+@media (min-width: 340px) and (max-width: 415px) {
   body {
     font-size: 10px;
     width: 559px;
