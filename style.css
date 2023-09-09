@@ -29,7 +29,13 @@ nav {
 
 #mainTxt {
   margin-left: 5rem;
+  cursor: pointer;
 }
+
+#mainTxt:hover {
+  text-decoration: underline;
+}
+
 #btn {
   display: flex;
   flex-direction: row;
@@ -221,7 +227,7 @@ article div:last-of-type div p {
   align-items: center;
 }
 #holdInf #border .selectBorder {
-  width: 6rem;
+  width: 8rem;
   height: 2rem;
   display: flex;
   flex-direction: row;
@@ -294,7 +300,6 @@ article div:last-of-type div p {
 .autocomplete-items div {
   padding: 10px;
   cursor: pointer;
- 
 }
 
 /*when hovering an item:*/
@@ -304,7 +309,7 @@ article div:last-of-type div p {
 
 /*when navigating through the items using the arrow keys:*/
 .autocomplete-active {
-  background-color: DodgerBlue !important;
+  background-color: #3e85a4 !important;
   color: #ffffff;
 }
 
@@ -314,5 +319,21 @@ article div:last-of-type div p {
   }
   body {
     font-size: 16px;
+  }
+}
+
+@media (min-width: 340px) and (max-width: 400px) {
+  body {
+    font-size: 10px;
+    width: 559px;
+  }
+
+  #srch {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  #form > input {
+    margin-left: 40px;
   }
 }

@@ -1,4 +1,5 @@
 window.addEventListener("load", () => {
+  "use strict";
   const btnMode = document.querySelector("#btn");
   const buttonTxt = document.querySelector("#btn  p");
   const svg = document.querySelector("#btn div:first-of-type");
@@ -10,9 +11,11 @@ window.addEventListener("load", () => {
   const placeholder = document.querySelector("#form > input::placeholder");
   const btnTxt = document.querySelector("#btn p");
   const sectionNav = document.querySelector("#srch");
-  let countries = [];
+  const mainTxt = document.querySelector("#mainTxt");
+  const countries = [];
   let modeClass = "dark";
   let myData = {};
+  let content = "";
 
   async function fetchData() {
     const data = await fetch("https://restcountries.com/v3.1/all");
@@ -23,17 +26,46 @@ window.addEventListener("load", () => {
   fetchData().then((data) => {
     myData = { ...data };
 
-    //Sorting the cards by aphabetic order ==========================
+    //Adding evt to main txt ================================================
+    mainTxt.onclick = () => {
+      inputSelect.focus();
+    };
+    //Sorting the cards by aphabetic order ==================================
     data.sort((a, b) => (a.name.common > b.name.common ? 1 : -1));
 
-    //Printing all cards with their respective country ==========================
-    let content = "";
+    //Printing all cards with their respective country ======================
     let main = document.querySelector("#main");
+    inputSelect.addEventListener("change", () => {
+      if (inputSelect.value != "all") {
+        makeCards("reg", inputSelect.value);
+      } else {
+        makeCards();
+      }
+    });
 
     makeCards();
-    function makeCards(call) {
-      if (call != "btnCAll") {
+    function makeCards(call, funReagion) {
+      if (call === undefined) {
+        makeAll(data);
+      } else if (call === "reg") {
+        let ctrRegion = [];
         data.forEach((country) => {
+          if (country.region === funReagion) {
+            ctrRegion.push(country);
+          }
+        });
+        makeAll(ctrRegion);
+      } else if (call === "btnCAll") {
+        main.innerHTML = content;
+        sectionNav.className = "marg";
+      } else {
+      }
+
+      function makeAll(dataPassed) {
+        log(dataPassed.length);
+        content = "";
+
+        dataPassed.forEach((country) => {
           countries.push(country.name.common);
           content +=
             " <article class='dark' id='" +
@@ -64,15 +96,13 @@ window.addEventListener("load", () => {
             "</article>";
         });
         main.innerHTML = content;
-      } else {
-        main.innerHTML = content;
-        sectionNav.className = "marg";
       }
+
       cardEfect();
     }
 
     //Addinng functionality to Button mode ===============================
-    addEvent("#202c37", "#2b3945 ", "underline black", "none");
+    addEvent("#202c37", "#2b3945 ", "underline white", "none");
 
     function addEvent(color1, color2, txtType1, txtType2) {
       btnMode.addEventListener("mouseover", () => {
@@ -90,7 +120,6 @@ window.addEventListener("load", () => {
     };
 
     function mode() {
-      "user strict";
       if (btnTxt.innerHTML === "Light Mode") {
         btnTxt.innerHTML = "Dark Mode";
         modeClass = "light";
@@ -301,8 +330,10 @@ window.addEventListener("load", () => {
       const buttonsBorder = document.querySelectorAll(".selectBorder");
       buttonsBorder.forEach((btn) => {
         btn.addEventListener("click", () => {
-          createExpandedCard(findCountry(btn.innerHTML));
-          modeHelper();
+          try {
+            createExpandedCard(findCountry(btn.innerHTML));
+            modeHelper();
+          } catch (err) {}
         });
       });
     }
@@ -412,4 +443,8 @@ window.addEventListener("load", () => {
   });
 
   //============================================================================
+
+  function log(arg) {
+    console.log(arg);
+  }
 });
