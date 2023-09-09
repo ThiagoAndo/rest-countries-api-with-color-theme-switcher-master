@@ -65,7 +65,6 @@ window.addEventListener("load", () => {
       }
 
       function makeAll(dataPassed) {
-        log(dataPassed.length);
         content = "";
 
         dataPassed.forEach((country) => {
@@ -312,6 +311,11 @@ window.addEventListener("load", () => {
       bordersBtn();
       modeHelper();
       sectionNav.className = "marTop";
+      if (x.matches) {
+        window.scrollBy({ top: -147 });
+      } else {
+        window.scrollBy({ top: -384 });
+      }
     }
 
     function findCountryNAme(cca3) {
