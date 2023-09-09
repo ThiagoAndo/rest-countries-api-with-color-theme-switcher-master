@@ -385,7 +385,7 @@ article div:last-of-type div p {
   #expand #flag {
     width: 100%;
     height: 350px;
-    background-size: 400px;
+    background-size: cover;
   }
 
   #expand #holdInf {
@@ -501,7 +501,7 @@ article div:last-of-type div p {
   #expand #flag {
     width: 100%;
     height: 350px;
-    background-size: 400px;
+    background-size: cover;
   }
 
   #expand #holdInf {
@@ -544,14 +544,17 @@ article div:last-of-type div p {
   }
 }
 
-@media (min-width: 1700px) and (max-width: 1900px) {
+@media (min-width: 1300px) and (max-width: 1400px) {
+  article {
+    width: 228px;
+    margin-left: 90px;
+  }
+  #holdInf #border .selectBorder{
+    width: 110px;
+  }
+  #expand{
+    height: 112vh;
+  }
 }
-
-@media (min-width: 402px) and (max-width: 1440px) {
-  html {
-    height: 100%;
-  }
-  body {
-    font-size: 16px;
-  }
+@media (min-width: 1700px) and (max-width: 1900px) {
 }
