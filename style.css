@@ -328,6 +328,10 @@ article div:last-of-type div p {
   nav {
     width: 340px;
   }
+
+  #form {
+    width: 100%;
+  }
   #form > input {
     width: 300px;
     padding: 5px;
@@ -443,6 +447,10 @@ article div:last-of-type div p {
   nav {
     width: 100%;
   }
+
+  #form {
+    width: 100%;
+  }
   #form > input {
     width: 364px;
     padding: 5px;
@@ -549,10 +557,10 @@ article div:last-of-type div p {
     width: 228px;
     margin-left: 90px;
   }
-  #holdInf #border .selectBorder{
+  #holdInf #border .selectBorder {
     width: 110px;
   }
-  #expand{
+  #expand {
     height: 112vh;
   }
 }
