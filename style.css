@@ -375,6 +375,7 @@ article div:last-of-type div p {
     width: 340px;
     background-color: #202c37;
     height: 1020px;
+    margin-top: 16px;
   }
   .btnExp {
     width: 130px;
@@ -493,8 +494,8 @@ article div:last-of-type div p {
   /* Expand screen======================================= */
   #expand {
     width: 400px;
-    background-color: #202c37;
     height: 1020px;
+    top: -16px;
   }
   .btnExp {
     width: 130px;

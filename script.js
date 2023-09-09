@@ -8,7 +8,6 @@ window.addEventListener("load", () => {
   let form = document.querySelector("#form");
   const input = document.querySelector("#form > input");
   const inputSelect = document.querySelector("#formSelec > select");
-  const placeholder = document.querySelector("#form > input::placeholder");
   const btnTxt = document.querySelector("#btn p");
   const sectionNav = document.querySelector("#srch");
   const mainTxt = document.querySelector("#mainTxt");
@@ -209,7 +208,7 @@ window.addEventListener("load", () => {
 
     function modeHelper() {
       if (btnTxt.innerHTML === "Light Mode") {
-        classes("dark", "bDark", "card");
+        classes("bDark", "dark", "card");
       } else {
         classes("light", "blight", "card");
       }
@@ -251,7 +250,7 @@ window.addEventListener("load", () => {
       }
 
       expand +=
-        '<section id="expand" class="bDark">' +
+        '<section id="expand">' +
         "<div>" +
         '<div class="btnExp dark">' +
         "<span>⬅️&nbsp&nbspBack</span>" +
