@@ -166,7 +166,12 @@ article div:last-of-type div p {
   box-shadow: 0px 0px 6px 0px black;
 }
 
-.btnExp span {
+.btnExp > span:first-of-type {
+  font-size: 1.9rem;
+  padding-bottom: 3px;
+}
+
+.btnExp > span:last-of-type {
   font-size: 1.2rem;
 }
 #expand #contExp {
@@ -378,7 +383,7 @@ article div:last-of-type div p {
     margin-top: 16px;
   }
   .btnExp {
-    width: 130px;
+    width: 117px;
     height: 35px;
   }
   #expand #contExp {
@@ -498,7 +503,7 @@ article div:last-of-type div p {
     top: -16px;
   }
   .btnExp {
-    width: 130px;
+    width: 117px;
     height: 35px;
   }
   #expand #contExp {

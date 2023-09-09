@@ -253,7 +253,8 @@ window.addEventListener("load", () => {
         '<section id="expand">' +
         "<div>" +
         '<div class="btnExp dark">' +
-        "<span>⬅️&nbsp&nbspBack</span>" +
+        "<span>⬅</span>"+
+        "<span>&nbsp&nbspBack</span>" +
         "</div>" +
         '<div id="contExp">' +
         '<div id="flag" style="background-image:' +
