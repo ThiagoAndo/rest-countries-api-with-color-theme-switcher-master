@@ -1,6 +1,6 @@
 import { modeClass } from "../script.js";
 import { createExpandedCard } from "../script.js";
-import { findCountry } from "../script.js";
+import { findCountry } from "./findCountry.js";
 export function autocomplete(inp, arr) {
   var currentFocus;
   inp.addEventListener("input", function (e) {

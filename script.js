@@ -1,22 +1,22 @@
 import { makeAll, content } from "./utilsJs/makeAllCoutries.js";
 import { expandCont } from "./utilsJs/makeExpadedCard.js";
 import { autocomplete } from "./utilsJs/autoComplete.js";
+import { findCountry } from "./utilsJs/findCountry.js";
+
 export let countries = [];
 export let modeClass = "dark";
 export const input = document.querySelector("#form > input");
-
-const btnMode = document.querySelector("#btn");
-const buttonTxt = document.querySelector("#btn  p");
-const svg = document.querySelector("#btn div:first-of-type");
-const nav = document.querySelector("nav");
-const body = document.querySelector("body");
-const inputSelect = document.querySelector("#formSelec > select");
-const btnTxt = document.querySelector("#btn p");
-const sectionNav = document.querySelector("#srch");
-const mainTxt = document.querySelector("#mainTxt");
-const x = window.matchMedia("(min-width: 740px)");
-let myData = {};
-
+export const btnMode = document.querySelector("#btn");
+export const buttonTxt = document.querySelector("#btn  p");
+export const svg = document.querySelector("#btn div:first-of-type");
+export const nav = document.querySelector("nav");
+export const body = document.querySelector("body");
+export const inputSelect = document.querySelector("#formSelec > select");
+export const btnTxt = document.querySelector("#btn p");
+export const sectionNav = document.querySelector("#srch");
+export const mainTxt = document.querySelector("#mainTxt");
+export const x = window.matchMedia("(min-width: 740px)");
+export let myData = {};
 async function fetchData() {
   const data = await fetch("https://restcountries.com/v3.1/all");
   const dataParse = await data.json();
@@ -28,14 +28,34 @@ fetchData().then((data) => {
   mainTxt.onclick = () => {
     inputSelect.focus();
   };
-  myData = data ;
-  
+  myData = data;
 });
 
 setTimeout(() => {
-makeCards();
+  makeCards();
 }, 400);
 
+addInputEvt();
+function addInputEvt() {
+  let form = document.querySelector("#form");
+  form.onkeydown = (event) => {
+    if (event.key === "Enter") {
+      let conf;
+      conf = countries.indexOf(input.value);
+      if (conf != -1) {
+        event.preventDefault();
+        createExpandedCard(findCountry(input.value, myData));
+        input.value = "";
+      } else {
+        alert(
+          "There is no Country Called : " +
+            input.value +
+            "\n\nYou can type another name."
+        );
+      }
+    }
+  };
+}
 //Adding functionality to by-region selection ==================================
 inputSelect.addEventListener("change", () => {
   if (inputSelect.value != "all") {
@@ -124,7 +144,7 @@ function cardEfect() {
     //Creating screen with a clicked country expanded =================================
     card.addEventListener("click", () => {
       sectionNav.className = "marTop";
-      let thisCountry = findCountry(card.id);
+      let thisCountry = findCountry(card.id, myData);
       createExpandedCard(thisCountry);
       modeHelper();
     });
@@ -133,14 +153,6 @@ function cardEfect() {
 
 //Adding event to search ==========================================
 autocomplete(document.getElementById("myInput"), countries);
-
-export function findCountry(country) {
-  let count = -1;
-  do {
-    count++;
-  } while (myData[count].name.common != country);
-  return myData[count];
-}
 
 export function createExpandedCard(country) {
   expandCont(country, myData);
@@ -171,56 +183,56 @@ function bordersBtn() {
   buttonsBorder.forEach((btn) => {
     btn.addEventListener("click", () => {
       try {
-        createExpandedCard(findCountry(btn.innerHTML));
+        createExpandedCard(findCountry(btn.innerHTML, myData));
         modeHelper();
       } catch (err) {}
     });
   });
 }
 
-  function modeHelper() {
-    if (btnTxt.innerHTML === "Light Mode") {
-      classes("bDark", "dark", "card");
-    } else {
-      classes("light", "blight", "card");
-    }
+function modeHelper() {
+  if (btnTxt.innerHTML === "Light Mode") {
+    classes("bDark", "dark", "card");
+  } else {
+    classes("light", "blight", "card");
+  }
+}
+
+function classes(class1, class2, call) {
+  if (call === undefined) {
+    const cards = document.querySelectorAll("article");
+    nav.className = class1;
+    body.className = class2;
+    input.className = class1;
+    inputSelect.className = class1;
+    cards.forEach((card) => {
+      card.className = class1;
+    });
+    classes2();
+  } else {
+    classes2();
   }
 
-  function classes(class1, class2, call) {
-    if (call === undefined) {
-      const cards = document.querySelectorAll("article");
-      nav.className = class1;
-      body.className = class2;
-      input.className = class1;
-      inputSelect.className = class1;
-      cards.forEach((card) => {
-        card.className = class1;
+  function classes2() {
+    try {
+      const expMode = document.querySelector("#expand");
+      const expModeBtn = document.querySelectorAll(".selectBorder");
+      const ModeBtnBack = document.querySelector(".btnExp");
+      btnsExpand(ModeBtnBack);
+
+      expModeBtn.forEach((btn) => {
+        btnsExpand(btn);
       });
-      classes2();
-    } else {
-      classes2();
-    }
 
-    function classes2() {
-      try {
-        const expMode = document.querySelector("#expand");
-        const expModeBtn = document.querySelectorAll(".selectBorder");
-        const ModeBtnBack = document.querySelector(".btnExp");
-        btnsExpand(ModeBtnBack);
+      function btnsExpand(obj = {}) {
+        const attr = obj.getAttribute("class");
+        const cls2 = attr.split(" ");
+        obj.classList.remove(cls2[1]);
+        obj.classList.add(class1);
+      }
 
-        expModeBtn.forEach((btn) => {
-          btnsExpand(btn);
-        });
-
-        function btnsExpand(obj = {}) {
-          const attr = obj.getAttribute("class");
-          const cls2 = attr.split(" ");
-          obj.classList.remove(cls2[1]);
-          obj.classList.add(class1);
-        }
-
-        expMode.className = class1;
-      } catch (err) {}
-    }
+      expMode.className = class1;
+    } catch (err) {}
   }
+}
 //============================================================================
