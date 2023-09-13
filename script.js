@@ -6,9 +6,7 @@ import {
   sectionNav,
   main,
   ctrRegion,
-  input,
   btnMode,
-  svg,
   inputSelect,
   mainTxt,
 } from "./utils/variables.js";
