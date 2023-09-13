@@ -180,7 +180,6 @@ article div:last-of-type div p {
   width: 100%;
   height: 50vh;
   margin-top: 3rem;
-  cursor: pointer;
   justify-content: space-evenly;
 }
 #expand #flag {
@@ -234,6 +233,7 @@ article div:last-of-type div p {
 #holdInf #border .selectBorder {
   width: 8rem;
   height: 2rem;
+  cursor: pointer;
   display: flex;
   flex-direction: row;
   align-items: center;

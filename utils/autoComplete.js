@@ -2,7 +2,7 @@ import { modeClass, myData } from "../script.js";
 import { createExpandedCard } from "../script.js";
 import { findCountry } from "./findCountry.js";
 
-
+//Adding event to search ==========================================
 export function autocomplete(inp, arr) {
   var currentFocus;
   inp.addEventListener("input", function (e) {
