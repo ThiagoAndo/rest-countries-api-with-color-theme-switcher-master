@@ -1,5 +1,4 @@
 import { countries, main } from "./variables.js";
-import { mode } from "./modeFun.js";
 
 export let content = "";
 let myCls = "";

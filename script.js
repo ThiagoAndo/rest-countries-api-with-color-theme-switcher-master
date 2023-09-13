@@ -10,6 +10,7 @@ import {
   inputSelect,
   mainTxt,
 } from "./utils/variables.js";
+import { content } from "./utils/makeAllCoutries.js";
 import { addInputEvt } from "./utils/inputEvt.js";
 import { myEvent } from "./utils/btnModeEvt.js";
 import { cardEfect } from "./utils/cardsEvt.js";
