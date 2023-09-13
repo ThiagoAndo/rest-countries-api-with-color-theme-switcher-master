@@ -425,7 +425,6 @@ article div:last-of-type div p {
     margin: 0px 0px -60px 0px;
     height: 105px;
     gap: 10px;
-    justify-content: space-evenly;
   }
   #holdInf .inf {
     margin-left: 0px;
@@ -546,8 +545,6 @@ article div:last-of-type div p {
     margin: 0px 0px -60px 0px;
     height: 105px;
     gap: 10px;
-    justify-content: space-evenly;
-
   }
   #holdInf .inf {
     margin-left: 0px;
