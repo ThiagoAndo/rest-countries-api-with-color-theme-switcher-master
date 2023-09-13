@@ -1,4 +1,4 @@
-import { makeAll, content } from "./utils/makeAllCoutries.js";
+import { makeAll, } from "./utils/makeAllCoutries.js";
 import { autocomplete } from "./utils/autoComplete.js";
 import {
   countries,
@@ -60,7 +60,6 @@ export function makeCards(call, funReagion) {
 btnMode.onclick = () => {
   mode();
 };
-
 export function modeHelper() {
   if (btnTxt.innerHTML === "Light Mode") {
     classes("bDark", "dark", "card");
