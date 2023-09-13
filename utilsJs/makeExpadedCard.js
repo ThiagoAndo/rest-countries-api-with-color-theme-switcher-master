@@ -1,4 +1,5 @@
-export function expandCont(country,data) {
+
+export function expandCont(country, data) {
   let expand = "";
   let currencie = "";
   let crr = "";
@@ -82,11 +83,10 @@ export function expandCont(country,data) {
   expand += "</div>" + "</div>" + "</div>" + "</div>" + "</div>" + "</section>";
   main.innerHTML = expand;
 }
- function findCountryNAme(cca3,data) {
-   let count = -1;
-   do {
-     count++;
-   } while (data[count].cca3 != cca3);
-   return data[count].name.common;
- }
-
+function findCountryNAme(cca3, data) {
+  let count = -1;
+  do {
+    count++;
+  } while (data[count].cca3 != cca3);
+  return data[count].name.common;
+}

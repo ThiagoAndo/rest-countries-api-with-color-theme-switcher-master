@@ -2,8 +2,19 @@ import { makeAll, content } from "./utilsJs/makeAllCoutries.js";
 import { expandCont } from "./utilsJs/makeExpadedCard.js";
 import { autocomplete } from "./utilsJs/autoComplete.js";
 import { findCountry } from "./utilsJs/findCountry.js";
-
+import { addInputEvt } from "./utilsJs/inputEvt.js";
+import { myEvent } from "./utilsJs/btnModeEvt.js";
+import { cardEfect } from "./utilsJs/cardsEvt.js";
+import { fetchData } from "./utilsJs/fetcheData.js";
+import { byRegion } from "./utilsJs/inputByRegionEvt.js";
+export let myData = {};
 export let countries = [];
+export let form = document.querySelector("#form");
+export const media = window.matchMedia("(min-width: 740px)");
+export const btnTxt = document.querySelector("#btn p");
+export const sectionNav = document.querySelector("#srch");
+export const main = document.querySelector("#main");
+
 export let modeClass = "dark";
 export const input = document.querySelector("#form > input");
 export const btnMode = document.querySelector("#btn");
@@ -12,61 +23,28 @@ export const svg = document.querySelector("#btn div:first-of-type");
 export const nav = document.querySelector("nav");
 export const body = document.querySelector("body");
 export const inputSelect = document.querySelector("#formSelec > select");
-export const btnTxt = document.querySelector("#btn p");
-export const sectionNav = document.querySelector("#srch");
 export const mainTxt = document.querySelector("#mainTxt");
-export const x = window.matchMedia("(min-width: 740px)");
-export let myData = {};
-async function fetchData() {
-  const data = await fetch("https://restcountries.com/v3.1/all");
-  const dataParse = await data.json();
-  return dataParse;
-}
 
 fetchData().then((data) => {
-  //Adding evt to main txt ================================================
-  mainTxt.onclick = () => {
-    inputSelect.focus();
-  };
   myData = data;
 });
+
+//Adding evt to main txt ================================================
+mainTxt.onclick = () => {
+  inputSelect.focus();
+};
 
 setTimeout(() => {
   makeCards();
 }, 400);
 
 addInputEvt();
-function addInputEvt() {
-  let form = document.querySelector("#form");
-  form.onkeydown = (event) => {
-    if (event.key === "Enter") {
-      let conf;
-      conf = countries.indexOf(input.value);
-      if (conf != -1) {
-        event.preventDefault();
-        createExpandedCard(findCountry(input.value, myData));
-        input.value = "";
-      } else {
-        alert(
-          "There is no Country Called : " +
-            input.value +
-            "\n\nYou can type another name."
-        );
-      }
-    }
-  };
-}
-//Adding functionality to by-region selection ==================================
-inputSelect.addEventListener("change", () => {
-  if (inputSelect.value != "all") {
-    makeCards("reg", inputSelect.value);
-  } else {
-    makeCards();
-  }
-});
+myEvent("#202c37", "#2b3945 ", "underline white", "none");
+cardEfect();
+byRegion();
 
 //Printing all cards with their respective country ======================
-function makeCards(call, funReagion) {
+export function makeCards(call, funReagion) {
   if (call === undefined) {
     makeAll(myData);
   } else if (call === "reg") {
@@ -85,22 +63,6 @@ function makeCards(call, funReagion) {
   cardEfect();
 }
 
-//Addinng functionality to Button mode ===============================
-addEvent("#202c37", "#2b3945 ", "underline white", "none");
-
-function addEvent(color1, color2, txtType1, txtType2) {
-  if (x.matches) {
-    btnMode.addEventListener("mouseover", () => {
-      btnMode.style.backgroundColor = color1;
-      buttonTxt.style.textDecoration = txtType1;
-    });
-    btnMode.addEventListener("mouseout", () => {
-      btnMode.style.backgroundColor = color2;
-      buttonTxt.style.textDecoration = txtType2;
-    });
-  }
-}
-
 btnMode.onclick = () => {
   mode();
 };
@@ -111,7 +73,7 @@ function mode() {
     modeClass = "light";
     classes("light", "blight");
     btnMode.style.backgroundColor = "#ffffff";
-    addEvent("#fafafa", "#ffffff", "underline black", "none");
+    myEvent("#fafafa", "#ffffff", "underline black", "none");
     input.classList.add("your-class");
     svg.classList.remove("filt");
   } else {
@@ -121,35 +83,11 @@ function mode() {
     input.classList.remove("your-class");
     svg.className = "filt";
     btnMode.style.backgroundColor = "#2b3945";
-    addEvent("#202c37", "#2b3945", "underline black", "none");
+    myEvent("#202c37", "#2b3945", "underline white", "none");
   }
 }
 
 //Addinng effect on the cards when the mouse is over ===============================
-cardEfect();
-function cardEfect() {
-  const cards = document.querySelectorAll("article");
-  cards.forEach((card) => {
-    card.addEventListener("mouseover", () => {
-      if (btnTxt.innerHTML === "Light Mode") {
-        card.style.boxShadow = "0px 0px 6px 0px white";
-      } else {
-        card.style.boxShadow = "0px 0px 6px 0px black";
-      }
-    });
-    card.addEventListener("mouseout", () => {
-      card.style.boxShadow = "0px 0px 0px 0px";
-    });
-
-    //Creating screen with a clicked country expanded =================================
-    card.addEventListener("click", () => {
-      sectionNav.className = "marTop";
-      let thisCountry = findCountry(card.id, myData);
-      createExpandedCard(thisCountry);
-      modeHelper();
-    });
-  });
-}
 
 //Adding event to search ==========================================
 autocomplete(document.getElementById("myInput"), countries);
@@ -160,12 +98,10 @@ export function createExpandedCard(country) {
   bordersBtn();
   modeHelper();
   sectionNav.className = "marTop";
-  if (x.matches) {
+  if (media.matches) {
     window.scrollBy({ top: -147 });
   } else {
     window.scrollBy({ top: -560 });
-
-    console.log("y :" + window.pageYOffset);
   }
 }
 
@@ -190,7 +126,7 @@ function bordersBtn() {
   });
 }
 
-function modeHelper() {
+export function modeHelper() {
   if (btnTxt.innerHTML === "Light Mode") {
     classes("bDark", "dark", "card");
   } else {

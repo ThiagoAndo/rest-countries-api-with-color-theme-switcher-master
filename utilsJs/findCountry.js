@@ -1,5 +1,5 @@
 
-export function findCountry(country,myData) {
+export function findCountry(country, myData) {
   let count = -1;
   do {
     count++;

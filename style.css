@@ -380,7 +380,6 @@ article div:last-of-type div p {
     width: 340px;
     background-color: #202c37;
     height: 1020px;
-    margin-top: 16px;
   }
   .btnExp {
     width: 117px;
@@ -394,7 +393,7 @@ article div:last-of-type div p {
   }
   #expand #flag {
     width: 100%;
-    height: 350px;
+    height: 180px;
     background-size: cover;
   }
 
@@ -514,7 +513,7 @@ article div:last-of-type div p {
   }
   #expand #flag {
     width: 100%;
-    height: 350px;
+    height: 180px;
     background-size: cover;
   }
 
