@@ -1,5 +1,4 @@
-import { nav,body,input,inputSelect } from "../script.js";
-
+import { input, nav, body, inputSelect } from "./variables.js";
 export function classes(class1, class2, call) {
   if (call === undefined) {
     const cards = document.querySelectorAll("article");

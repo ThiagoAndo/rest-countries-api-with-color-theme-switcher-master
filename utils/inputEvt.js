@@ -1,5 +1,6 @@
-import { input, myData, countries, form} from "../script.js";
-import { createExpandedCard } from "../script.js";
+import { countries, input } from "./variables.js";
+import { myData } from "../script.js";
+import { createExpandedCard } from "./createExpanded.js";
 import { findCountry } from "./findCountry.js";
 let conf;
 

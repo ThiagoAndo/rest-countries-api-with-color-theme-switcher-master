@@ -1,6 +1,8 @@
-import { modeClass, myData } from "../script.js";
-import { createExpandedCard } from "../script.js";
+import { createExpandedCard } from "./createExpanded.js";
 import { findCountry } from "./findCountry.js";
+import { modeClass } from "./modeFun.js";
+import { myData } from "../script.js";
+
 
 //Adding event to search ==========================================
 export function autocomplete(inp, arr) {

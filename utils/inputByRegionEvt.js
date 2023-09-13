@@ -1,6 +1,6 @@
 //Adding functionality to by-region selection ==================================
-import { inputSelect, makeCards } from "../script.js";
-
+import { makeCards } from "../script.js";
+import { inputSelect } from "./variables.js";
 export function byRegion() {
   inputSelect.addEventListener("change", () => {
     if (inputSelect.value != "all") {

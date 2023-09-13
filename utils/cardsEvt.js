@@ -1,10 +1,8 @@
-import {
-  btnTxt,
-  myData,
-  modeHelper,
-  sectionNav,
-  createExpandedCard,
-} from "../script.js";
+import { modeHelper } from "../script.js";
+import { btnTxt, sectionNav } from "./variables.js";
+import { myData } from "../script.js";
+
+import { createExpandedCard } from "./createExpanded.js";
 
 import { findCountry } from "./findCountry.js";
 

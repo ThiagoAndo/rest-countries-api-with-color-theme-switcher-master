@@ -1,6 +1,6 @@
-import { countries } from "../script.js";
-export let content = "";
+import { countries, main } from "./variables.js";
 
+export let content = "";
 /*This function will  sorte the coutries by alphabetic order and 
 print them. It also will print countries by region.*/
 

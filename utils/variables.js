@@ -1,0 +1,16 @@
+export let countries = [];
+export let form = document.querySelector("#form");
+export let ctrRegion = [];
+export const media = window.matchMedia("(min-width: 740px)");
+export const btnTxt = document.querySelector("#btn p");
+export const sectionNav = document.querySelector("#srch");
+export const main = document.querySelector("#main");
+export let myData = {};
+export const input = document.querySelector("#form > input");
+export const btnMode = document.querySelector("#btn");
+export const buttonTxt = document.querySelector("#btn  p");
+export const svg = document.querySelector("#btn div:first-of-type");
+export const nav = document.querySelector("nav");
+export const body = document.querySelector("body");
+export const inputSelect = document.querySelector("#formSelec > select");
+export const mainTxt = document.querySelector("#mainTxt");

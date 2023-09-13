@@ -1,4 +1,4 @@
-
+import { main } from "./variables.js";
 export function expandCont(country, data) {
   let expand = "";
   let currencie = "";
