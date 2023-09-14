@@ -1,4 +1,4 @@
-import { makeCards } from "../script.js";
+import { makeCards } from "./makeCards.js";
 
 export function evtBackButton() {
   let bckBtn = document.querySelector(".btnExp");

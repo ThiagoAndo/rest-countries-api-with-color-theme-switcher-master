@@ -1,5 +1,5 @@
 import { mode } from "./modeFun.js";
-import { mainTxt,btnMode } from "./variables.js";
+import { mainTxt,btnMode,inputSelect} from "./variables.js";
 
 
 export function myEvts() {
