@@ -17,14 +17,11 @@ import { cardEfect } from "./utils/cardsEvt.js";
 import { gettingData, myData } from "./utils/fetcheData.js";
 import { byRegion } from "./utils/inputByRegionEvt.js";
 import { classes } from "./utils/changeClasses.js";
-import { mode } from "./utils/modeFun.js";
-
+import { myEvts } from "./utils/addEvt.js";
 gettingData();
 //Adding evt to main txt ================================================
-mainTxt.onclick = () => {
-  inputSelect.focus();
-};
 
+myEvts();
 
 
 addInputEvt();
@@ -52,9 +49,7 @@ export function makeCards(call, funReagion) {
 
   cardEfect();
 }
-btnMode.onclick = () => {
-  mode();
-};
+
 export function modeHelper() {
   if (btnTxt.innerHTML === "Light Mode") {
     classes("bDark", "dark", "card");
