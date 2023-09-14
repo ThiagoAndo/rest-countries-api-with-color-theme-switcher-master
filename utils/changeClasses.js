@@ -1,4 +1,4 @@
-import { input, nav, body, inputSelect } from "./variables.js";
+import { input, nav, body, inputSelect,btnTxt } from "./variables.js";
 export function classes(class1, class2, call) {
   if (call === undefined) {
     const cards = document.querySelectorAll("article");
@@ -36,3 +36,12 @@ export function classes(class1, class2, call) {
     } catch (err) {}
   }
 }
+
+export function modeHelper() {
+  if (btnTxt.innerHTML === "Light Mode") {
+    classes("bDark", "dark", "card");
+  } else {
+    classes("light", "blight", "card");
+  }
+}
+

@@ -1,4 +1,4 @@
-import { modeHelper } from "../script.js";
+import { modeHelper } from "./changeClasses.js";
 import { btnTxt, sectionNav } from "./variables.js";
 import { myData } from "./fetcheData.js";
 

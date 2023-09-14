@@ -1,6 +1,6 @@
 import { findCountry } from "./findCountry.js";
 import { createExpandedCard } from "./createExpanded.js";
-import { modeHelper } from "../script.js";
+import { modeHelper } from "./changeClasses.js";
 import { myData } from "./fetcheData.js";
 
 //Adding event to borders buttons ==========================================

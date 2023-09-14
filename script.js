@@ -50,10 +50,3 @@ export function makeCards(call, funReagion) {
   cardEfect();
 }
 
-export function modeHelper() {
-  if (btnTxt.innerHTML === "Light Mode") {
-    classes("bDark", "dark", "card");
-  } else {
-    classes("light", "blight", "card");
-  }
-}
