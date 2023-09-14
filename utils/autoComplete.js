@@ -1,7 +1,7 @@
 import { createExpandedCard } from "./createExpanded.js";
 import { findCountry } from "./findCountry.js";
 import { modeClass } from "./modeFun.js";
-import { myData } from "../script.js";
+import { myData } from "./fetcheData.js";
 
 
 //Adding event to search ==========================================

@@ -1,6 +1,6 @@
 import { modeHelper } from "../script.js";
 import { btnTxt, sectionNav } from "./variables.js";
-import { myData } from "../script.js";
+import { myData } from "./fetcheData.js";
 
 import { createExpandedCard } from "./createExpanded.js";
 

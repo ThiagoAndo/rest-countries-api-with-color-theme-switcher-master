@@ -5,7 +5,6 @@ export const media = window.matchMedia("(min-width: 740px)");
 export const btnTxt = document.querySelector("#btn p");
 export const sectionNav = document.querySelector("#srch");
 export const main = document.querySelector("#main");
-export let myData = {};
 export const input = document.querySelector("#form > input");
 export const btnMode = document.querySelector("#btn");
 export const buttonTxt = document.querySelector("#btn  p");

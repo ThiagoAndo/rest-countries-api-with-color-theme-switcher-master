@@ -3,7 +3,7 @@ import { evtBackButton } from "./backBtnEvt.js";
 import { modeHelper } from "../script.js";
 import { bordersBtn } from "./bordersBtnEvt.js";
 import { media, sectionNav } from "./variables.js";
-import { myData } from "../script.js";
+import { myData } from "./fetcheData.js";
 
 export function createExpandedCard(country) {
   expandCont(country, myData);

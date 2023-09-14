@@ -1,5 +1,5 @@
 import { countries, input } from "./variables.js";
-import { myData } from "../script.js";
+import { myData } from "./fetcheData.js";
 import { createExpandedCard } from "./createExpanded.js";
 import { findCountry } from "./findCountry.js";
 let conf;
