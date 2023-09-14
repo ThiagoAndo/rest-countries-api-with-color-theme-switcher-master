@@ -4,7 +4,7 @@ import { createExpandedCard } from "./createExpanded.js";
 import { findCountry } from "./findCountry.js";
 let conf;
 
-export function addInputEvt() {
+export let addInputEvt = () => {
   form.onkeydown = (event) => {
     if (event.key === "Enter") {
       conf = countries.indexOf(input.value);
@@ -14,9 +14,9 @@ export function addInputEvt() {
         input.value = "";
       } else {
         alert(
-          "There is no Country Called : " +
-            input.value +
-            "\n\nYou can type another name."
+          `There is no Country Called : ${input.value}
+
+You can type another name.`
         );
       }
     }

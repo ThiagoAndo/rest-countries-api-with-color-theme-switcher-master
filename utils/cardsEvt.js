@@ -1,12 +1,10 @@
 import { modeHelper } from "./changeClasses.js";
 import { btnTxt, sectionNav } from "./variables.js";
 import { myData } from "./fetcheData.js";
-
 import { createExpandedCard } from "./createExpanded.js";
-
 import { findCountry } from "./findCountry.js";
 
-export function cardEfect() {
+export let cardEfect = () => {
   const cards = document.querySelectorAll("article");
   cards.forEach((card) => {
     card.addEventListener("mouseover", () => {

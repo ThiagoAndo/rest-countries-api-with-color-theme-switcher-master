@@ -4,7 +4,7 @@ import { modeHelper } from "./changeClasses.js";
 import { myData } from "./fetcheData.js";
 
 //Adding event to borders buttons ==========================================
-export function bordersBtn() {
+export let bordersBtn = () => {
   const buttonsBorder = document.querySelectorAll(".selectBorder");
   buttonsBorder.forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -12,7 +12,6 @@ export function bordersBtn() {
         createExpandedCard(findCountry(btn.innerHTML, myData));
         modeHelper();
       } catch (err) {
-        console.log(err);
       }
     });
   });

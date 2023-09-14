@@ -1,5 +1,6 @@
-import { input, nav, body, inputSelect,btnTxt } from "./variables.js";
-export function classes(class1, class2, call) {
+import { input, nav, body, inputSelect, btnTxt } from "./variables.js";
+
+export let classes = (class1, class2, call) => {
   if (call === undefined) {
     const cards = document.querySelectorAll("article");
     nav.className = class1;
@@ -35,13 +36,12 @@ export function classes(class1, class2, call) {
       expMode.className = class1;
     } catch (err) {}
   }
-}
+};
 
-export function modeHelper() {
+export let modeHelper = () => {
   if (btnTxt.innerHTML === "Light Mode") {
     classes("bDark", "dark", "card");
   } else {
     classes("light", "blight", "card");
   }
 }
-

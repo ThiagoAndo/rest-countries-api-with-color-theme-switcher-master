@@ -3,9 +3,8 @@ import { findCountry } from "./findCountry.js";
 import { modeClass } from "./modeFun.js";
 import { myData } from "./fetcheData.js";
 
-
 //Adding event to search ==========================================
-export function autocomplete(inp, arr) {
+export let autocomplete = (inp, arr) => {
   var currentFocus;
   inp.addEventListener("input", function (e) {
     var a,
@@ -83,4 +82,4 @@ export function autocomplete(inp, arr) {
   document.addEventListener("click", function (e) {
     closeAllLists(e.target);
   });
-}
+};

@@ -5,7 +5,7 @@ import { bordersBtn } from "./bordersBtnEvt.js";
 import { media, sectionNav } from "./variables.js";
 import { myData } from "./fetcheData.js";
 
-export function createExpandedCard(country) {
+export let createExpandedCard = (country) => {
   expandCont(country, myData);
   evtBackButton();
   bordersBtn();
@@ -16,4 +16,4 @@ export function createExpandedCard(country) {
   } else {
     window.scrollBy({ top: -560 });
   }
-}
+};
