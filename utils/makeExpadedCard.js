@@ -7,6 +7,7 @@ export let expandCont = (country, data) => {
   let lag = "";
   let subReg = "";
   let capital = "";
+  let longName = "";
   if (
     country.currencies &&
     country.languages &&
@@ -74,10 +75,24 @@ export let expandCont = (country, data) => {
   if (country.borders) {
     for (let index = 0; index < country.borders.length; index++) {
       let name = findCountryNAme(country.borders[index], data);
-      expand += '<span class="selectBorder dark">' + `${name}` + "</span>";
+      longName = "";
+      if (name.length > 10) {
+        for (let index = 0; index <= 10; index++) {
+          if (index <= 9) {
+            longName += name[index];
+          } else if (index == 10) {
+            longName += " ...";
+          }
+        }
+        expand +=
+          `<span class="selectBorder dark" id ="${name}">` + `${longName}` + "</span>";
+      } else {
+        expand +=
+          `<span class="selectBorder dark" id ="${name}">` +
+          `${name}` +
+          "</span>";
+      }
     }
-  } else {
-    expand += '<span class="selectBorder dark"> No Borders</span>';
   }
 
   expand += "</div>" + "</div>" + "</div>" + "</div>" + "</div>" + "</section>";

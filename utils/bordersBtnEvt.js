@@ -9,7 +9,7 @@ export let bordersBtn = () => {
   buttonsBorder.forEach((btn) => {
     btn.addEventListener("click", () => {
       try {
-        createExpandedCard(findCountry(btn.innerHTML, myData));
+        createExpandedCard(findCountry(btn.id, myData));
         modeHelper();
       } catch (err) {
       }
