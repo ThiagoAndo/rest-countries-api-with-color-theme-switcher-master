@@ -437,7 +437,7 @@ article div:last-of-type div p {
   }
 }
 
-@media (min-width: 341px) and (max-width: 401px) {
+@media (min-width: 341px) and (max-width: 490px) {
   body {
     font-size: 12px;
     width: 401px;
@@ -556,6 +556,109 @@ article div:last-of-type div p {
     margin-bottom: 0;
   }
 }
+@media (min-width: 490px) and (max-width: 768px) {
+  nav {
+    width: 100%;
+  }
+  main {
+    width: 100%;
+}
+  #mainTxt {
+    margin-left: 3rem;
+  }
+  #btn {
+    margin-right: 3rem;
+  }
+  #form {
+    width: 325px;
+  }
+  #form > input {
+    margin-left: 3rem;
+    width: 16rem;
+    width: 255px;
+  }
+  #main {
+    width: 90%;
+    padding-bottom: 5.625rem;
+    overflow: hidden;
+    margin: auto;
+}
+  #formSelec select {
+    margin-right: 3rem;
+  }
+ article {
+    width: 42%;
+    margin-left: 40px;
+}
+ #expand #flag {
+    width: 32rem;
+
+  }
+  #holdInf .inf {
+    font-size: .7rem;
+    margin-left: 1rem;
+  }
+  #holdInf #border{
+    font-size: .7rem;
+    margin-left: 1rem;
+  }
+  #holdInf #border .selectBorder {
+    width: 4rem;
+    font-size: 0.6rem;
+
+  }
+  .btnExp {
+    width: 7rem;
+}
+}
+@media (min-width: 769px) and (max-width: 1300px) {
+  nav {
+    width: 100%;
+  }
+  main {
+    width: 100%;
+}
+ 
+  
+  #form {
+    width: 325px;
+  }
+  #form > input {
+    width: 16rem;
+    width: 420px;
+  }
+  #main {
+    width: 90%;
+    padding-bottom: 5.625rem;
+    overflow: hidden;
+    margin: auto;
+}
+ 
+ article {
+    width: 28%;
+    margin-left: 40px;
+}
+ #expand #flag {
+    width: 32rem;
+
+  }
+  #holdInf .inf {
+    font-size: .7rem;
+    margin-left: 1rem;
+  }
+  #holdInf #border{
+    font-size: .7rem;
+    margin-left: 1rem;
+  }
+  #holdInf #border .selectBorder {
+    width: 4rem;
+    font-size: 0.6rem;
+
+  }
+  .btnExp {
+    width: 7rem;
+}
+}
 
 @media (min-width: 1300px) and (max-width: 1400px) {
   article {
@@ -568,6 +671,4 @@ article div:last-of-type div p {
   #expand {
     height: 112vh;
   }
-}
-@media (min-width: 1700px) and (max-width: 1900px) {
 }
