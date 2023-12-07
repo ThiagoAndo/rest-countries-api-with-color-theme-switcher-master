@@ -46,6 +46,7 @@ nav {
   margin-right: 5rem;
   cursor: pointer;
   box-sizing: content-box;
+  border-radius: 1.5rem;
 }
 
 #btn div:first-of-type {
@@ -289,12 +290,11 @@ article div:last-of-type div p {
 .wait_data {
   width: 50%;
   height: 30vh;
-  background-image: url('./assets/Eclipse-1s-200px.svg') ;
+  background-image: url("./assets/Eclipse-1s-200px.svg");
   background-position: center;
   background-repeat: no-repeat;
   font-size: 2rem;
   margin: 5rem auto;
-
 }
 /* Auto Complete================================ */
 

@@ -10,7 +10,7 @@ import { myEvts } from "./utils/addEvt.js";
 gettingData();
 myEvts();
 addInputEvt();
-myEvent("#202c37", "#2b3945 ", "underline white", "none");
+myEvent("#202c373d", "#2b394569", "underline white", "none");
 cardEfect();
 byRegion();
 autocomplete(document.getElementById("myInput"), countries);
