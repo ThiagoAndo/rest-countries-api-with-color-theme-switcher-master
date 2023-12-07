@@ -16,3 +16,4 @@ export let gettingData = () => {
     makeCards();
   }, 400);
 };
+

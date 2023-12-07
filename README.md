@@ -1,6 +1,6 @@
 # Frontend Mentor - REST Countries API with color theme switcher solution
 
-This is a solution to the [REST Countries API with color theme switcher challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+This is a solution to the [REST Countries API with color theme switcher challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
 ## Table of contents
 
@@ -29,24 +29,73 @@ Users should be able to:
 - Filter countries by region
 - Click on a country to see more detailed information on a separate page
 - Click through to the border countries on the detail page
-- Toggle the color scheme between light and dark mode *(optional)*
+- Toggle the color scheme between light and dark mode _(optional)_
 
 ### Screenshot
 
-![](./screenshot.jpg)
+</br>
 
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
+#### Mobile
 
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
+</br>
+<p align="center">
+    <img src="./screenshot/Mob1.png" alt="Mobile Version Picture">
+     <figcaption>Fig.1 - Web page on a mobile.</figcaption>
+</p>
+</br>
+<p align="center">
+    <img src="./screenshot/Mob2.PNG" alt="Mobile Version Picture">
+    <figcaption>Fig.2 - Clicked deteiled country. </figcaption>
+</p>
+</br>
+<hr>
+</br>
 
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
+#### Desktop
 
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+</br>
+<p align="center" >
+    <img src="./screenshot/Loading.PNG" alt="Desktop Version Picture" width="600">
+     <figcaption>Fig.3 - Loading gif while page is fetching data.</figcaption>
+</p>
+</br>
+<p align="center">
+    <img src="./screenshot/DeskAll.PNG" alt="Desktop Version Picture" width="600">
+     <figcaption>Fig.4 - Web page on a Desktop.</figcaption>
+</p>
+</br>
+<p align="center">
+    <img src="./screenshot/Desk2.PNG" alt="Desktop Version Picture" width="600">
+    <figcaption>Fig.5 -Light mode on a desktop.</figcaption>
+</p>
+</br>
+<p align="center">
+    <img src="./screenshot/Expanded.PNG" alt="Desktop Version Picture"
+    width="600">
+    <figcaption>Fig.7 - Clicked deteiled country on a desktop. </figcaption>
+</p>
+</br>
+<p align="center">
+    <img src="./screenshot/autoComplete.PNG" alt="Desktop Version Picture"
+    width="600">
+    <figcaption>Fig.8 - Auto Complete on the Search field. </figcaption>
+</p>
+</br>
+<p align="center">
+    <img src="./screenshot/Where.PNG" alt="Desktop Version Picture"
+    width="200"
+    height="77">
+    <img src="./screenshot/space.PNG" alt="Desktop Version Picture"
+    width="200">
+    <img src="./screenshot/ByRegion.PNG" alt="Desktop Version Picture"
+    width="200">
+    <figcaption>Fig.9 - When a user clicks on Where in the world, an event will be triggered, and the field Filter by region will flash to alert the user of the region options. </figcaption>
+</p>
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Solution Frontend Mentor](https://www.frontendmentor.io/solutions/mobile-first-aproach-T2VjFPEejD)
+- Live Site URL: [live site](https://thiagoando.github.io/rest-countries-api-with-color-theme-switcher-master/)
 
 ## My process
 
@@ -72,15 +121,17 @@ To see how you can add code snippets, see below:
 ```html
 <h1>Some HTML code I'm proud of</h1>
 ```
+
 ```css
 .proud-of-this-css {
   color: papayawhip;
 }
 ```
+
 ```js
 const proudOfThisFunc = () => {
-  console.log('🎉')
-}
+  console.log("🎉");
+};
 ```
 
 If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
