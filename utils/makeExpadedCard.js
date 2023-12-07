@@ -74,7 +74,7 @@ export let expandCont = (country, data) => {
     '<div id="btnBor">';
   if (country.borders) {
     for (let index = 0; index < country.borders.length; index++) {
-      let name = findCountryNAme(country.borders[index], data);
+      let name = findCountryName(country.borders[index], data);
       longName = "";
       if (name.length > 10) {
         for (let index = 0; index <= 10; index++) {
@@ -98,7 +98,7 @@ export let expandCont = (country, data) => {
   expand += "</div>" + "</div>" + "</div>" + "</div>" + "</div>" + "</section>";
   main.innerHTML = expand;
 };
-let findCountryNAme = (cca3, data) => {
+let findCountryName = (cca3, data) => {
   let count = -1;
   do {
     count++;

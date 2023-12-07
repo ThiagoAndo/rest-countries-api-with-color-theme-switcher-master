@@ -286,6 +286,16 @@ article div:last-of-type div p {
   overflow: hidden;
 }
 
+.wait_data {
+  width: 50%;
+  height: 30vh;
+  background-image: url('./assets/Eclipse-1s-200px.svg') ;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-size: 2rem;
+  margin: 5rem auto;
+
+}
 /* Auto Complete================================ */
 
 .autocomplete {
@@ -562,7 +572,7 @@ article div:last-of-type div p {
   }
   main {
     width: 100%;
-}
+  }
   #mainTxt {
     margin-left: 3rem;
   }
@@ -582,34 +592,32 @@ article div:last-of-type div p {
     padding-bottom: 5.625rem;
     overflow: hidden;
     margin: auto;
-}
+  }
   #formSelec select {
     margin-right: 3rem;
   }
- article {
+  article {
     width: 42%;
     margin-left: 40px;
-}
- #expand #flag {
+  }
+  #expand #flag {
     width: 32rem;
-
   }
   #holdInf .inf {
-    font-size: .7rem;
+    font-size: 0.7rem;
     margin-left: 1rem;
   }
-  #holdInf #border{
-    font-size: .7rem;
+  #holdInf #border {
+    font-size: 0.7rem;
     margin-left: 1rem;
   }
   #holdInf #border .selectBorder {
     width: 4rem;
     font-size: 0.6rem;
-
   }
   .btnExp {
     width: 7rem;
-}
+  }
 }
 @media (min-width: 769px) and (max-width: 1300px) {
   nav {
@@ -617,9 +625,8 @@ article div:last-of-type div p {
   }
   main {
     width: 100%;
-}
- 
-  
+  }
+
   #form {
     width: 325px;
   }
@@ -632,32 +639,30 @@ article div:last-of-type div p {
     padding-bottom: 5.625rem;
     overflow: hidden;
     margin: auto;
-}
- 
- article {
+  }
+
+  article {
     width: 28%;
     margin-left: 40px;
-}
- #expand #flag {
+  }
+  #expand #flag {
     width: 32rem;
-
   }
   #holdInf .inf {
-    font-size: .7rem;
+    font-size: 0.7rem;
     margin-left: 1rem;
   }
-  #holdInf #border{
-    font-size: .7rem;
+  #holdInf #border {
+    font-size: 0.7rem;
     margin-left: 1rem;
   }
   #holdInf #border .selectBorder {
     width: 4rem;
     font-size: 0.6rem;
-
   }
   .btnExp {
     width: 7rem;
-}
+  }
 }
 
 @media (min-width: 1300px) and (max-width: 1400px) {
