@@ -28,13 +28,13 @@
   <main>
 
     <section id="srch" class="marg">
-      <form role="search-role" id="form">
+      <form role="search-role" id="form" autocomplete="off">
         <div class="autocomplete"></div>
-        <input class="dark" type="text" id="myInput" name="myCountry" placeholder="&#61442; Search for a country..."
+        <input class="dark" type="text" autocomplete="false" id="myInput" name="myCountry" placeholder="&#61442; Search for a country..."
           aria-label="Search through the content of the site" />
         </div>
       </form>
-      <form action="/" id="formSelec">
+      <form action="/" id="formSelec" >
         <select name="type" class="dark">
           <option value="" disabled selected hidden>Filter by Region</option>
           <option Africa="education">Africa</option>

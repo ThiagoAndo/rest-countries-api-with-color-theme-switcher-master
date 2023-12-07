@@ -9,7 +9,6 @@ export let gettingData = () => {
     const dataParse = await data.json();
     return dataParse;
   }
-
   fetchData().then((data) => {
     myData = data;
   });
