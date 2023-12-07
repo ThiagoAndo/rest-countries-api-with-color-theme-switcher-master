@@ -274,7 +274,7 @@ article div:last-of-type div p {
   color: hsl(200, 15%, 8%);
 }
 
-.your-class::placeholder {
+.light::placeholder {
   color: #858585;
 }
 
