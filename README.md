@@ -38,14 +38,16 @@ Users should be able to:
 #### Mobile
 
 </br>
-<p align="center">
-    <img src="./screenshot/mob.png" alt="Mobile Version Picture">
-     <figcaption>Fig.1 - Web page on a mobile.</figcaption>
-</p>
-</br>
+
 <p align="center">
     <img src="./screenshot/Mob2.PNG" alt="Mobile Version Picture">
-    <figcaption>Fig.2 - Clicked deteiled country. </figcaption>
+    <figcaption>Fig.1 - Clicked deteiled country. </figcaption>
+</p>
+</br>
+
+<p align="center">
+    <img src="./screenshot/mob.png" alt="Mobile Version Picture">
+     <figcaption>Fig.2 - Web page on a mobile.</figcaption>
 </p>
 </br>
 <hr>
