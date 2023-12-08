@@ -76,6 +76,12 @@ Users should be able to:
 </p>
 </br>
 <p align="center">
+    <img src="./screenshot/Desk3.PNG" alt="Desktop Version Picture"
+    width="600">
+    <figcaption>Fig.7 - Clicked deteiled country on a desktop light mode. </figcaption>
+</p>
+</br>
+<p align="center">
     <img src="./screenshot/autoComplete.PNG" alt="Desktop Version Picture"
     width="600">
     <figcaption>Fig.8 - Auto Complete on the Search field. </figcaption>
@@ -89,7 +95,7 @@ Users should be able to:
     width="200">
     <img src="./screenshot/ByRegion.PNG" alt="Desktop Version Picture"
     width="200">
-    <figcaption>Fig.9 - When a user clicks on Where in the world, an event will be triggered, and the field Filter by region will flash to alert the user of the region options. </figcaption>
+    <figcaption>Fig.9 - When a user clicks on [ Where in the world? ], an event will be triggered, and the field [ Filter by Region ] will flash to alert the user of the region options. </figcaption>
 </p>
 
 ### Links
@@ -102,65 +108,187 @@ Users should be able to:
 ### Built with
 
 - Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
 - CSS Grid
 - Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+- Java Script Modules
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+<div style="text-align: justify">
+Building front-end web pages is such an enjoyable task to accomplish. Getting a layout of a website made by a web designer and working towards making it functional and running on the browser is challenging and exciting. However, most online applications with a User Interface are built to create a bridge between the user and the server that stores and sends data. This challenge from Frontend Mentor gives a more real case of a web application which retrieves data from an API running in a server that can be accessed through [ https://restcountries.com ]. This API provides data in the format of JSON data, which stands for JavaScript Object Notation. Working with data plays a role in how you have to develop your code. First, you have to understand the data you are getting. Then, you have to formulate strategies for retrieving the specific parts of the JSON and display them on the web page.
+</br></br>
 
-To see how you can add code snippets, see below:
+I've decided to code this web page using JS modules that allow the creation of many scripts where you can put small pieces of code. This feature is part of the second major update of JavaScript [ ECMAScript 2015 ] and is undoubtedly a solution to make scripts more readable and easy to maintain. Also, I wanted to learn well this JS feature because my next goal is to work with the JavaScript library React, which relies heavily on this concept.
+</br></br>
+As there is always room for improvement, I've decided to implement a few functionalities in the application which were not part of the original challenge, such as the loading gif that appears on the screen while the application waits for the server response (see figure 3), the auto-fill suggestion on the search bar that gives suggestions of possible countries that the user might be looking for (see figure 8), and the flashing select when the user clicks on the main text of the page(see figure 9).
+.
 
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
+</div>
 
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
+<br>
+<hr>
+<br>
+
+##### Creating the cards dynamically
 
 ```js
-const proudOfThisFunc = () => {
-  console.log("🎉");
-};
+import { countries, main } from "./variables.js";
+import { btnTxt } from "./variables.js";
+
+let myCls = "";
+
+export let content = "";
+export let makeAll = (dataPassed) => {
+  //Sorting the cards by aphabetic order ==================================
+  dataPassed.sort((a, b) => (a.name.common > b.name.common ? 1 : -1));
+  content = "";
+  if (btnTxt.innerHTML === "Light Mode") {
+    myCls = "dark";
+  } else {
+    myCls = "light";
+  }
+  dataPassed.forEach((country) => {
+    countries.push(country.name.common);
+    content +=
+      " <article class=" +
+      `${myCls}` +
+      " id='" +
+      `${country.name.common}` +
+      "'>" +
+      "<div style='background-image:" +
+      "url(" +
+      `${country.flags.png}` +
+      ")'" +
+      ">" +
+      "</div>" +
+      "<div>" +
+      "<div class='infoBox'>" +
+      "<h3>" +
+      `${country.name.common}` +
+      "</h3>" +
+      "<p><strong>Population:</strong>&nbsp " +
+      `${country.population}` +
+      "</p>" +
+      "<p><strong>Region:</strong>&nbsp " +
+      `${country.region}` +
+      "</p>" +
+      "<p><strong>Capital:</strong>&nbsp " +
+      `${country.capital}` +
+      "</p>" +
+      "</div>" +
+      "</div>" +
+      "</article>";
+  });
+  main.innerHTML = content;
+}
+
 ```
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+##### Autocomplete adapted 
+
+```js
+import { createExpandedCard } from "./createExpanded.js";
+import { findCountry } from "./findCountry.js";
+import { modeClass } from "./modeFun.js";
+import { myData } from "./fetcheData.js";
+
+//Adding event to search ==========================================
+export let autocomplete = (inp, arr) => {
+  var currentFocus;
+  inp.addEventListener("input", function (e) {
+    var a,
+      b,
+      i,
+      val = this.value;
+    closeAllLists();
+    if (!val) {
+      return false;
+    }
+    currentFocus = -1;
+    a = document.createElement("DIV");
+    a.setAttribute("id", this.id + "autocomplete-list");
+    a.setAttribute("class", "autocomplete-items");
+    this.parentNode.appendChild(a);
+    for (i = 0; i < arr.length; i++) {
+      if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+        b = document.createElement("DIV");
+        b.setAttribute("class", `${modeClass}`);
+
+        b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+        b.innerHTML += arr[i].substr(val.length);
+        b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+        b.addEventListener("click", function (e) {
+          inp.value = this.getElementsByTagName("input")[0].value;
+          closeAllLists();
+
+          setTimeout(() => {
+            createExpandedCard(
+              findCountry(this.getElementsByTagName("input")[0].value, myData)
+            );
+          }, 300);
+        });
+        a.appendChild(b);
+      }
+    }
+  });
+  inp.addEventListener("keydown", function (e) {
+    var x = document.getElementById(this.id + "autocomplete-list");
+    if (x) x = x.getElementsByTagName("div");
+    if (e.keyCode == 40) {
+      currentFocus++;
+      addActive(x);
+    } else if (e.keyCode == 38) {
+      //up
+      currentFocus--;
+      addActive(x);
+    } else if (e.keyCode == 13) {
+      e.preventDefault();
+      if (currentFocus > -1) {
+        if (x) x[currentFocus].click();
+      }
+    }
+  });
+  function addActive(x) {
+    if (!x) return false;
+    removeActive(x);
+    if (currentFocus >= x.length) currentFocus = 0;
+    if (currentFocus < 0) currentFocus = x.length - 1;
+    x[currentFocus].classList.add("autocomplete-active");
+  }
+  function removeActive(x) {
+    for (var i = 0; i < x.length; i++) {
+      x[i].classList.remove("autocomplete-active");
+    }
+  }
+  function closeAllLists(elmnt) {
+    var x = document.getElementsByClassName("autocomplete-items");
+    for (var i = 0; i < x.length; i++) {
+      if (elmnt != x[i] && elmnt != inp) {
+        x[i].parentNode.removeChild(x[i]);
+      }
+    }
+  }
+  document.addEventListener("click", function (e) {
+    closeAllLists(e.target);
+  });
+};
+
+```
 
 ### Continued development
+<div style="text-align: justify">
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+As I previously said, my next step on this rewarding journey of learning web development is to use React JS to build web pages and learn how to code in Node JS to create small backend scripts for my projects. I really enjoy programming with JS. However, to complete this dynamic project, I had to mainly code HTML inside of my scripts to be rendered by the DOM. That is when you realise the limitations of Vannila JS. React offers a great solution for those problems and I am enthusiastic to learn it
+</div>
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+- [Auto Complete Search bar](https://www.w3schools.com/howto/howto_js_autocomplete.asp) - This is the HTML, CSS and JS code of the Autocomplete for the search bar. If you want to use it, your work will be to adapt it to your project.
 
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+- Github - [Thiago Ando de Freitas](https://github.com/ThiagoAndo)
+- Frontend Mentor - [@ThiagoAndo](https://www.frontendmentor.io/profile/ThiagoAndo)
+- Alive Website - [rest-countries-api](https://thiagoando.github.io/rest-countries-api-with-color-theme-switcher-master/)
