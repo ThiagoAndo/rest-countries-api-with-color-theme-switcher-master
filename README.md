@@ -39,7 +39,7 @@ Users should be able to:
 
 </br>
 <p align="center">
-    <img src="./screenshot/Mob1.png" alt="Mobile Version Picture">
+    <img src="./screenshot/mob.png" alt="Mobile Version Picture">
      <figcaption>Fig.1 - Web page on a mobile.</figcaption>
 </p>
 </br>
