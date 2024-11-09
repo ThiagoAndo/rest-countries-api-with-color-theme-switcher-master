@@ -291,4 +291,4 @@ As I previously said, my next step on this rewarding journey of learning web dev
 
 - Github - [Thiago Ando de Freitas](https://github.com/ThiagoAndo)
 - Frontend Mentor - [@ThiagoAndo](https://www.frontendmentor.io/profile/ThiagoAndo)
-- Alive Website - [rest-countries-api](https://thiagoando.github.io/rest-countries-api-with-color-theme-switcher-master/)
+- live Website - [rest-countries-api](https://thiagoando.github.io/rest-countries-api-with-color-theme-switcher-master/)
